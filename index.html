@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Easy English Audio</title>
-  <!-- Современный шрифт для удобного чтения -->
+  <title>Easy English Audio — Home</title>
   <link rel="preconnect" href="https://googleapis.com">
   <link rel="preconnect" href="https://gstatic.com" crossorigin>
   <link href="https://googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -19,11 +18,11 @@
       display: flex;
       justify-content: center;
     }
-    .player-card {
+    .menu-card {
       background: #ffffff;
       padding: 30px;
       border-radius: 16px;
-      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
       width: 100%;
       max-width: 450px;
     }
@@ -34,40 +33,51 @@
       margin-bottom: 24px;
       border-bottom: 2px solid #f1f5f9;
       padding-bottom: 12px;
+      text-align: center;
     }
-    .category {
-      font-size: 12px;
+    .section-title {
+      font-size: 14px;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: #64748b;
       font-weight: 600;
-      margin-bottom: 4px;
+      color: #64748b;
+      margin: 20px 0 10px 0;
     }
-    h3 {
-      font-size: 20px;
+    .lessons-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .lessons-list li {
+      margin-bottom: 10px;
+    }
+    .lesson-link {
+      display: block;
+      padding: 12px 16px;
+      background: #f1f5f9;
       color: #2563eb;
-      margin-top: 0;
-      margin-bottom: 20px;
-    }
-    audio {
-      width: 100%;
+      text-decoration: none;
       border-radius: 8px;
+      font-weight: 500;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .lesson-link:hover {
+      background: #e2e8f0;
+      transform: translateX(4px);
     }
   </style>
 </head>
-
 <body>
 
-  <div class="player-card">
-    <h1>Easy English Audio</h1>
-
-    <div class="category">My World</div>
-    <h3>01. My Family</h3>
-
-    <!-- Исправленный тег аудио с прямой ссылкой -->
-    <audio controls src="./01_My_Family.mp3">
-      Your browser does not support audio.
-    </audio>
+  <div class="menu-card">
+    <h1>🎧 Easy English Audio</h1>
+    
+    <div class="section-title">My World</div>
+    <ul class="lessons-list">
+      <!-- Ссылка ведет на отдельный файл family.html -->
+      <li><a class="lesson-link" href="family.html">👉 01. My Family</a></li>
+      <!-- Ссылка на будущий второй урок -->
+      <li><a class="lesson-link" href="hobbies.html">👉 02. My Hobbies</a></li>
+    </ul>
   </div>
 
 </body>
