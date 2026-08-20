@@ -1,22 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Easy English Audio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy English Audio</title>
+    <!-- Подключаем красивый шрифт Google Fonts -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Общие стили для всей страницы */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f7f6; /* Мягкий светлый фон */
+            color: #2d3748; /* Темно-серый текст вместо резкого черного */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Шапка сайта */
+        header {
+            background-color: #ffffff;
+            width: 100%;
+            text-align: center;
+            padding: 24px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+            color: #4a5568;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        /* Главный контейнер для контента */
+        .container {
+            max-width: 600px;
+            width: 90%;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 16px; /* Закругленные углы */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); /* Легкая тень */
+        }
+
+        /* Разделы и темы */
+        .section-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #3182ce; /* Красивый синий акцент */
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .lesson-title {
+            font-size: 22px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #1a202c;
+        }
+
+        /* Стиль для аудиоплеера */
+        audio {
+            width: 100%;
+            border-radius: 8px;
+            outline: none;
+            background-color: #edf2f7;
+        }
+
+        /* Блок для текста/упражнений (понадобится для обучения) */
+        .study-box {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .hint {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #4a5568;
+            background: #ebf8ff;
+            padding: 15px;
+            border-left: 4px solid #3182ce;
+            border-radius: 0 8px 8px 0;
+        }
+    </style>
 </head>
-
 <body>
-  <h1>Easy English Audio</h1>
 
-  <h2>My World</h2>
+    <header>
+        <h1>🎧 Easy English Audio</h1>
+    </header>
 
-  <h3>01. My Family</h3>
+    <div class="container">
+        <div class="section-title">Раздел: My World</div>
+        <h2 class="lesson-title">01. My Family</h2>
+        
+        <!-- Ваш аудиоплеер (вставьте сюда правильный путь к аудиофайлу) -->
+        <audio controls src="audio/my_family.mp3"></audio>
 
-  <audio controls>
-    <source src="01_My_Family.mp3" type="audio/mpeg">
-    Your browser does not support audio.
-  </audio>
+        <!-- Полезный блок для обучения (текст под аудио) -->
+        <div class="study-box">
+            <p class="hint">
+                💡 **Совет по обучению:** Сначала прослушайте аудиозапись целиком, не отвлекаясь. Затем повторите прослушивание, стараясь разбирать отдельные слова и выписывать незнакомые фразы.
+            </p>
+        </div>
+    </div>
 
 </body>
 </html>
