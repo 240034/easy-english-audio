@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Easy English Audio — Home</title>
-  <link rel="preconnect" href="https://googleapis.com">
-  <link rel="preconnect" href="https://gstatic.com" crossorigin>
-  <link href="https://googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <style>
     body {
@@ -15,41 +15,62 @@
       color: #1e293b;
       margin: 0;
       padding: 40px 20px;
-      display: flex;
-      justify-content: center;
     }
-    .menu-card {
-      background: #ffffff;
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-      width: 100%;
-      max-width: 450px;
+
+    /* Общий оберточный контейнер */
+    .app-container {
+      max-width: 1200px;
+      margin: 0 auto;
     }
+
+    /* Заголовок вынесен из карточки наверх */
     h1 {
-      font-size: 24px;
+      font-size: 28px;
       color: #0f172a;
       margin-top: 0;
-      margin-bottom: 24px;
-      border-bottom: 2px solid #f1f5f9;
-      padding-bottom: 12px;
+      margin-bottom: 32px;
       text-align: center;
     }
+
+    /* Контейнер для размещения карточек в ряд */
+    .cards-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    /* Стили отдельной карточки */
+    .menu-card {
+      background: #ffffff;
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      flex: 1 1 320px; /* Эластичная ширина: минимум ~320px */
+      max-width: 380px;
+    }
+
     .section-title {
       font-size: 14px;
       text-transform: uppercase;
       font-weight: 600;
       color: #64748b;
-      margin: 20px 0 10px 0;
+      margin: 0 0 16px 0;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #f1f5f9;
     }
+
     .lessons-list {
       list-style: none;
       padding: 0;
       margin: 0;
     }
+
     .lessons-list li {
       margin-bottom: 10px;
     }
+
     .lesson-link {
       display: block;
       padding: 12px 16px;
@@ -60,6 +81,7 @@
       font-weight: 500;
       transition: background 0.2s, transform 0.1s;
     }
+
     .lesson-link:hover {
       background: #e2e8f0;
       transform: translateX(4px);
@@ -68,30 +90,75 @@
 </head>
 <body>
 
-  <div class="menu-card">
+  <div class="app-container">
     <h1>🎧 Easy English Audio</h1>
-    
-    <div class="section-title">My World</div>
-    <ul class="lessons-list">
-      <!-- Ссылка ведет на отдельный файл family.html -->
-      <li><a class="lesson-link" href="family.html">👉 01. My Family</a></li>
-      <!-- Ссылка на будущий второй урок -->
-      <li><a class="lesson-link" href="friend.html">👉 02. My Best Friend</a></li>
-      <!-- Ссылка на будущий второй урок -->
-      <li><a class="lesson-link" href="routine.html">👉 03. My Daily Routine</a></li>
-      <!-- Ссылка на будущий второй урок -->
-      <li><a class="lesson-link" href="weekend.html">👉 04. My Weekend</a></li>
-      <!-- Ссылка на будущий второй урок -->
-      <li><a class="lesson-link" href="home.html">👉 05. My Home</a></li>
-      <!-- Ссылка на будущий второй урок -->
-      <li><a class="lesson-link" href="city.html">👉 06. My City</a></li>
-      <!-- Ссылка на будущий второй урок -->
-      <li><a class="lesson-link" href="school.html">👉 07. A Day at School</a></li>
-      <!-- Ссылка на будущий второй урок -->
-      <li><a class="lesson-link" href="teacher.html">👉 08. My Favourite Teacher</a></li>
-      <!-- Ссылка на будущий второй урок -->
-      <li><a class="lesson-link" href="people.html">👉 09. People Around the World</a></li>
-    </ul>
+
+    <div class="cards-grid">
+      
+      <div class="menu-card">
+        <div class="section-title">My World</div>
+        <ul class="lessons-list">
+          <li><a class="lesson-link" href="family.html">👉 01. My Family</a></li>
+          <li><a class="lesson-link" href="friend.html">👉 02. My Best Friend</a></li>
+          <li><a class="lesson-link" href="routine.html">👉 03. My Daily Routine</a></li>
+          <li><a class="lesson-link" href="weekend.html">👉 04. My Weekend</a></li>
+          <li><a class="lesson-link" href="home.html">👉 05. My Home</a></li>
+          <li><a class="lesson-link" href="city.html">👉 06. My City</a></li>
+          <li><a class="lesson-link" href="school.html">👉 07. A Day at School</a></li>
+          <li><a class="lesson-link" href="teacher.html">👉 08. My Favourite Teacher</a></li>
+          <li><a class="lesson-link" href="people.html">👉 09. People Around the World</a></li>
+        </ul>
+      </div>
+
+      <div class="menu-card">
+        <div class="section-title">Food</div>
+        <ul class="lessons-list">
+          <li><a class="lesson-link" href="food.html">🍔 01. My Favorite Food</a></li>
+          <li><a class="lesson-link" href="drink.html">🍔 02. My Favorite Drink</a></li>
+          <li><a class="lesson-link" href="breakfast.html">🍔 03. Breakfast Around World</a></li>
+          <li><a class="lesson-link" href="lunch.html">🍔 04. Lunch Around World</a></li>
+          <li><a class="lesson-link" href="famous.html">🍔 05. Famous World Food</a></li>
+          <li><a class="lesson-link" href="fruits.html">🍔 05. Fruits Around World</a></li>
+          <li><a class="lesson-link" href="healthy.html">🍔 05. Healthy Food</a></li>
+          <li><a class="lesson-link" href="sworsal.html">🍔 05. Sweet or Salty?</a></li>
+          <li><a class="lesson-link" href="cfe.html">🍔 05. At the Café</a></li>
+          <li><a class="lesson-link" href="restaurant.html">🍔 05. At the Restaurant</a></li>
+          <li><a class="lesson-link" href="dessert.html">🍔 05. My Favorite Dessert</a></li>
+        </ul>
+      </div>
+
+      <!-- Блок 3: ANIMALS & NATURE -->
+      <div class="menu-card">
+        <div class="section-title">Animals & Nature</div>
+        <ul class="lessons-list">
+          <li><a class="lesson-link" href="favorite-animal.html">🐾 01. My Favorite Animal</a></li>
+          <li><a class="lesson-link" href="cats-or-dogs.html">🐱 02. Cats or Dogs?</a></li>
+          <li><a class="lesson-link" href="my-pet.html">🐶 03. My Pet</a></li>
+          <li><a class="lesson-link" href="wild-animals.html">🦁 04. Wild Animals</a></li>
+          <li><a class="lesson-link" href="zoo-animals.html">🐘 05. Animals at the Zoo</a></li>
+          <li><a class="lesson-link" href="baby-animals.html">🐥 06. Baby Animals</a></li>
+          <li><a class="lesson-link" href="big-and-small.html">🐋 07. Big and Small</a></li>
+          <li><a class="lesson-link" href="nature.html">🌿 08. Beautiful Nature</a></li>
+          <li><a class="lesson-link" href="seasons.html">🍂 09. The Four Seasons</a></li>
+          <li><a class="lesson-link" href="rainy-day.html">🌧️ 10. A Rainy Day</a></li>
+        </ul>
+      </div>
+
+      <!-- Блок 4: HOBBIES AND FREE TIME -->
+      <div class="menu-card">
+        <div class="section-title">Hobbies and Free Time</div>
+        <ul class="lessons-list">
+          <li><a class="lesson-link" href="favorite-hobby.html">🎨 01. My Favorite Hobby</a></li>
+          <li><a class="lesson-link" href="reading-books.html">📚 02. Reading Books</a></li>
+          <li><a class="lesson-link" href="listening-music.html">🎧 03. Listening to Music</a></li>
+          <li><a class="lesson-link" href="watching-movies.html">🎬 04. Watching Movies</a></li>
+          <li><a class="lesson-link" href="playing-sports.html">⚽ 05. Playing Sports</a></li>
+          <li><a class="lesson-link" href="drawing-pictures.html">✏️ 06. Drawing Pictures</a></li>
+          <li><a class="lesson-link" href="time-to-relax.html">🧘 07. Time to Relax</a></li>
+        </ul>
+      </div>
+
+    </div>
   </div>
 
 </body>
