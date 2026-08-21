@@ -30,22 +30,24 @@
       text-align: center;
     }
 
-    /* Основная сетка на 3 колонки */
+    /* 3 автономные колонки в ряд */
     .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: flex;
+      justify-content: center;
       gap: 24px;
-      align-items: start; /* Не дает карточкам растягиваться по высоте на весь экран */
+      align-items: flex-start; /* Важно: карточки НЕ растягиваются по высоте */
     }
 
-    /* Колонка, в которую складываются блоки друг под другом */
+    /* Внутренний контейнер колонки */
     .column {
       display: flex;
       flex-direction: column;
-      gap: 24px; /* Отступ между верхней и нижней карточкой */
+      gap: 24px; /* Расстояние между верхней и нижней карточкой */
+      flex: 1;
+      max-width: 380px;
     }
 
-    /* Карточка обрезается ровно по своему контенту */
+    /* Карточка обрезается ровно по содержимому */
     .menu-card {
       background: #ffffff;
       padding: 24px;
@@ -53,7 +55,6 @@
       box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
       box-sizing: border-box;
       width: 100%;
-      height: fit-content; /* Высота строго по контенту */
     }
 
     .section-title {
@@ -80,7 +81,6 @@
       margin-bottom: 0;
     }
 
-    /* Фиксированный и одинаковый размер всех плашек */
     .lesson-link {
       display: block;
       padding: 12px 16px;
@@ -104,7 +104,11 @@
 
     @media (max-width: 900px) {
       .cards-grid {
-        grid-template-columns: 1fr;
+        flex-direction: column;
+        align-items: center;
+      }
+      .column {
+        width: 100%;
       }
     }
   </style>
@@ -118,7 +122,7 @@
       
       <!-- КОЛОНКА 1 -->
       <div class="column">
-        <!-- My World (закончится ровно на 9 пункте) -->
+        
         <div class="menu-card">
           <div class="section-title">My World</div>
           <ul class="lessons-list">
@@ -134,7 +138,6 @@
           </ul>
         </div>
 
-        <!-- Hobbies (поднимется наверх с отступом 24px) -->
         <div class="menu-card">
           <div class="section-title">Hobbies and Free Time</div>
           <ul class="lessons-list">
@@ -147,11 +150,12 @@
             <li><a class="lesson-link" href="time-to-relax.html">🧘 07. Time to Relax</a></li>
           </ul>
         </div>
+
       </div>
 
       <!-- КОЛОНКА 2 -->
       <div class="column">
-        <!-- Food (самый длинный, на 11 пунктов) -->
+        
         <div class="menu-card">
           <div class="section-title">Food</div>
           <ul class="lessons-list">
@@ -168,11 +172,12 @@
             <li><a class="lesson-link" href="dessert.html">🍰 11. My Favorite Dessert</a></li>
           </ul>
         </div>
+
       </div>
 
       <!-- КОЛОНКА 3 -->
       <div class="column">
-        <!-- Animals & Nature (закончится ровно на 10 пункте) -->
+        
         <div class="menu-card">
           <div class="section-title">Animals & Nature</div>
           <ul class="lessons-list">
@@ -188,6 +193,7 @@
             <li><a class="lesson-link" href="rainy-day.html">🌧️ 10. A Rainy Day</a></li>
           </ul>
         </div>
+
       </div>
 
     </div>
