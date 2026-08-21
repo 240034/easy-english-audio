@@ -9,110 +9,105 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <style>
-  body {
-    font-family: 'Inter', sans-serif;
-    background-color: #f8fafc;
-    color: #1e293b;
-    margin: 0;
-    padding: 40px 20px;
-  }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+      color: #1e293b;
+      margin: 0;
+      padding: 40px 20px;
+    }
 
-  .app-container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+    .app-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-  h1 {
-    font-size: 28px;
-    color: #0f172a;
-    margin-top: 0;
-    margin-bottom: 32px;
-    text-align: center;
-  }
+    h1 {
+      font-size: 28px;
+      color: #0f172a;
+      margin-top: 0;
+      margin-bottom: 32px;
+      text-align: center;
+    }
 
-  /* Сетка на 3 колонки: карточки в одной строке выравниваются по высоте самой высокой */
-  .cards-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    align-items: stretch; /* Растягивает все карточки в строке по высоте */
-  }
-
-  .menu-card {
-    background: #ffffff;
-    padding: 24px;
-    border-radius: 16px;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-    box-sizing: border-box;
-    width: 100%;
-    
-    /* Делаем карточку Flex-контейнером, чтобы она растягивалась, а пустое место оставалось снизу */
-    display: flex;
-    flex-direction: column;
-    height: 100%; 
-  }
-
-  /* Позиционирование карточки Hobbies во второй строке первой колонки */
-  .menu-card.hobbies-card {
-    grid-column: 1;
-    grid-row: 2;
-  }
-
-  .section-title {
-    font-size: 14px;
-    text-transform: uppercase;
-    font-weight: 600;
-    color: #64748b;
-    margin: 0 0 16px 0;
-    padding-bottom: 8px;
-    border-bottom: 2px solid #f1f5f9;
-  }
-
-  .lessons-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .lessons-list li {
-    margin-bottom: 10px;
-  }
-
-  .lessons-list li:last-child {
-    margin-bottom: 0;
-  }
-
-  .lesson-link {
-    display: block;
-    padding: 12px 16px;
-    background: #f1f5f9;
-    color: #2563eb;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: 500;
-    transition: background 0.2s, transform 0.1s;
-    height: 20px;
-    line-height: 20px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .lesson-link:hover {
-    background: #e2e8f0;
-    transform: translateX(4px);
-  }
-
-  @media (max-width: 900px) {
+    /* Основная сетка на 3 колонки */
     .cards-grid {
-      grid-template-columns: 1fr;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: start; /* Не дает карточкам растягиваться по высоте на весь экран */
     }
-    .menu-card.hobbies-card {
-      grid-column: auto;
-      grid-row: auto;
+
+    /* Колонка, в которую складываются блоки друг под другом */
+    .column {
+      display: flex;
+      flex-direction: column;
+      gap: 24px; /* Отступ между верхней и нижней карточкой */
     }
-  }
-</style>
+
+    /* Карточка обрезается ровно по своему контенту */
+    .menu-card {
+      background: #ffffff;
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      box-sizing: border-box;
+      width: 100%;
+      height: fit-content; /* Высота строго по контенту */
+    }
+
+    .section-title {
+      font-size: 14px;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: #64748b;
+      margin: 0 0 16px 0;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #f1f5f9;
+    }
+
+    .lessons-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .lessons-list li {
+      margin-bottom: 10px;
+    }
+
+    .lessons-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Фиксированный и одинаковый размер всех плашек */
+    .lesson-link {
+      display: block;
+      padding: 12px 16px;
+      background: #f1f5f9;
+      color: #2563eb;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: background 0.2s, transform 0.1s;
+      height: 20px;
+      line-height: 20px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .lesson-link:hover {
+      background: #e2e8f0;
+      transform: translateX(4px);
+    }
+
+    @media (max-width: 900px) {
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -121,10 +116,9 @@
 
     <div class="cards-grid">
       
-      <!-- ПЕРВАЯ КОЛОНКА (My World, Hobbies и будущие блоки) -->
+      <!-- КОЛОНКА 1 -->
       <div class="column">
-        
-        <!-- Блок: MY WORLD (с уникальными эмодзи) -->
+        <!-- My World (закончится ровно на 9 пункте) -->
         <div class="menu-card">
           <div class="section-title">My World</div>
           <ul class="lessons-list">
@@ -140,7 +134,7 @@
           </ul>
         </div>
 
-        <!-- Блок: HOBBIES AND FREE TIME (прямо под My World) -->
+        <!-- Hobbies (поднимется наверх с отступом 24px) -->
         <div class="menu-card">
           <div class="section-title">Hobbies and Free Time</div>
           <ul class="lessons-list">
@@ -153,14 +147,11 @@
             <li><a class="lesson-link" href="time-to-relax.html">🧘 07. Time to Relax</a></li>
           </ul>
         </div>
-
-        <!-- Сюда можно добавлять новые блоки в 1-ю колонку -->
-
       </div>
 
-      <!-- ВТОРАЯ КОЛОНКА (Food) -->
+      <!-- КОЛОНКА 2 -->
       <div class="column">
-        
+        <!-- Food (самый длинный, на 11 пунктов) -->
         <div class="menu-card">
           <div class="section-title">Food</div>
           <ul class="lessons-list">
@@ -177,14 +168,11 @@
             <li><a class="lesson-link" href="dessert.html">🍰 11. My Favorite Dessert</a></li>
           </ul>
         </div>
-
-        <!-- Сюда можно добавлять новые блоки во 2-ю колонку -->
-
       </div>
 
-      <!-- ТРЕТЬЯ КОЛОНКА (Animals & Nature) -->
+      <!-- КОЛОНКА 3 -->
       <div class="column">
-        
+        <!-- Animals & Nature (закончится ровно на 10 пункте) -->
         <div class="menu-card">
           <div class="section-title">Animals & Nature</div>
           <ul class="lessons-list">
@@ -200,9 +188,6 @@
             <li><a class="lesson-link" href="rainy-day.html">🌧️ 10. A Rainy Day</a></li>
           </ul>
         </div>
-
-        <!-- Сюда можно добавлять новые блоки в 3-ю колонку (рядом с Hobbies) -->
-
       </div>
 
     </div>
