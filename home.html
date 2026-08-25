@@ -3,12 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>05. My Home — Easy English Audio</title>
-  <link rel="preconnect" href="https://googleapis.com">
-  <link rel="preconnect" href="https://gstatic.com" crossorigin>
-  <link href="https://googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
       background-color: #f8fafc;
@@ -18,58 +24,684 @@
       display: flex;
       justify-content: center;
     }
+
     .player-card {
       background: #ffffff;
       padding: 30px;
       border-radius: 16px;
-      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      box-shadow: 0 4px 20px -5px rgb(0 0 0 / 0.08);
       width: 100%;
       max-width: 450px;
     }
+
     .back-btn {
       display: inline-block;
       color: #64748b;
       text-decoration: none;
       font-size: 14px;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       font-weight: 500;
     }
+
     .back-btn:hover {
       color: #0f172a;
     }
+
     .category {
       font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
       color: #64748b;
       font-weight: 600;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
+
     h3 {
-      font-size: 22px;
+      font-size: 24px;
       color: #2563eb;
-      margin-top: 0;
-      margin-bottom: 20px;
+      margin: 0 0 10px;
     }
+
+    .info {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .tag {
+      background-color: #eff6ff;
+      color: #2563eb;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 10px;
+      border-radius: 20px;
+    }
+
+    /* AUDIO */
+
+    .listen-box {
+      background-color: #f8fafc;
+      padding: 18px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+    }
+
+    .listen-title,
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #64748b;
+      margin-bottom: 8px;
+    }
+
+    .listen-text {
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.5;
+      margin: 0 0 15px;
+    }
+
     audio {
       width: 100%;
       border-radius: 8px;
     }
+
+    /* BUTTONS */
+
+    .toggle-btn {
+      width: 100%;
+      border: 1px solid #dbeafe;
+      background-color: #eff6ff;
+      color: #2563eb;
+      padding: 12px 15px;
+      border-radius: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .toggle-btn:hover {
+      background-color: #dbeafe;
+    }
+
+    /* TEXT */
+
+    .text-section {
+      margin: 20px 0 24px;
+    }
+
+    .story-text {
+      display: none;
+      margin-top: 12px;
+      padding: 18px;
+      background-color: #f8fafc;
+      border-radius: 12px;
+      font-size: 14px;
+      line-height: 1.8;
+      color: #334155;
+    }
+
+    .story-text.show {
+      display: block;
+    }
+
+    .story-text p {
+      margin: 0 0 16px;
+    }
+
+    .story-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* VOCABULARY */
+
+    .vocabulary {
+      border-top: 1px solid #e2e8f0;
+      padding-top: 22px;
+    }
+
+    .vocabulary-content {
+      display: none;
+      margin-top: 14px;
+    }
+
+    .vocabulary-content.show {
+      display: block;
+    }
+
+    .word {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f1f5f9;
+      font-size: 14px;
+    }
+
+    .word:last-child {
+      border-bottom: none;
+    }
+
+    .english-word {
+      font-weight: 600;
+      color: #1e293b;
+    }
+
+    .translation {
+      color: #64748b;
+      text-align: right;
+    }
+
+    /* QUIZ COMMON STYLES */
+
+    .quiz {
+      margin-top: 24px;
+      padding-top: 22px;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .quiz-content {
+      display: none;
+      margin-top: 14px;
+    }
+
+    .quiz-content.show {
+      display: block;
+    }
+
+    .question {
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.5;
+      margin: 8px 0 14px;
+    }
+
+    .question-number {
+      display: block;
+      font-size: 12px;
+      color: #64748b;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .answers {
+      display: grid;
+      gap: 8px;
+    }
+
+    .answer-btn {
+      border: 1px solid #e2e8f0;
+      background-color: #ffffff;
+      color: #334155;
+      padding: 12px;
+      border-radius: 10px;
+      text-align: left;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .answer-btn:hover:not(:disabled) {
+      background-color: #f8fafc;
+      border-color: #93c5fd;
+    }
+
+    .answer-btn:disabled {
+      cursor: default;
+    }
+
+    .answer-btn.correct {
+      background-color: #dcfce7;
+      border-color: #86efac;
+      color: #166534;
+    }
+
+    .answer-btn.wrong {
+      background-color: #fee2e2;
+      border-color: #fca5a5;
+      color: #991b1b;
+    }
+
+    .quiz-result {
+      display: none;
+      margin-top: 12px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .quiz-result.show {
+      display: block;
+    }
+
+    .restart-btn {
+      display: none;
+      width: 100%;
+      margin-top: 16px;
+      border: none;
+      background-color: #2563eb;
+      color: white;
+      padding: 12px;
+      border-radius: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .restart-btn.show {
+      display: block;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 480px) {
+      body {
+        padding: 20px 14px;
+      }
+
+      .player-card {
+        padding: 22px;
+      }
+    }
   </style>
 </head>
+
 <body>
 
   <div class="player-card">
-    <!-- Ссылка "index.html" вернет пользователя на главную страницу -->
+
+    <!-- BACK -->
+
     <a href="index.html" class="back-btn">⬅ Назад к списку</a>
 
+    <!-- TITLE -->
+
     <div class="category">My World</div>
+
     <h3>05. My Home</h3>
 
-    <audio controls src="./05_My_Home.mp3">
-      Your browser does not support audio.
-    </audio>
+    <div class="info">
+      <span class="tag">A1</span>
+      <span class="tag">Reading & Listening</span>
+    </div>
+
+    <!-- AUDIO -->
+
+    <div class="listen-box">
+
+      <div class="listen-title">🎧 LISTEN TO THE TEXT</div>
+
+      <p class="listen-text">
+        Listen carefully. You can follow the text below.
+      </p>
+
+      <audio controls src="./05_My_Home.mp3">
+        Your browser does not support audio.
+      </audio>
+
+    </div>
+
+    <!-- SHOW / HIDE TEXT -->
+
+    <div class="text-section">
+
+      <button class="toggle-btn" id="toggleText">
+        📖 Show Text
+      </button>
+
+      <div class="story-text" id="storyText">
+
+        <p>
+          I live in a nice and comfortable home with my family. Our home is not very big, but it has everything we need.
+        </p>
+
+        <p>
+          There is a living room, a kitchen, two bedrooms, and a bathroom. The living room is my favourite room. There is a big sofa, a table, and a TV. We often sit there and watch movies together.
+        </p>
+
+        <p>
+          The kitchen is next to the living room. There is a fridge, a table, and some chairs. My mother often cooks there.
+        </p>
+
+        <p>
+          My bedroom is small but cozy. I have a bed, a desk, a chair, and a wardrobe. I like spending time in my room because it is quiet and comfortable.
+        </p>
+
+        <p>
+          I love my home because it is a warm and happy place for my family.
+        </p>
+
+      </div>
+
+    </div>
+
+    <!-- VOCABULARY -->
+
+    <div class="vocabulary">
+
+      <button class="toggle-btn" id="toggleVocabulary">
+        📚 Show Vocabulary
+      </button>
+
+      <div class="vocabulary-content" id="vocabularyContent">
+
+        <div class="section-title">📚 KEY VOCABULARY</div>
+
+        <div class="word">
+          <span class="english-word">comfortable</span>
+          <span class="translation">удобный, комфортный</span>
+        </div>
+
+        <div class="word">
+          <span class="english-word">living room</span>
+          <span class="translation">гостиная</span>
+        </div>
+
+        <div class="word">
+          <span class="english-word">kitchen</span>
+          <span class="translation">кухня</span>
+        </div>
+
+        <div class="word">
+          <span class="english-word">bedroom</span>
+          <span class="translation">спальня</span>
+        </div>
+
+        <div class="word">
+          <span class="english-word">fridge</span>
+          <span class="translation">холодильник</span>
+        </div>
+
+        <div class="word">
+          <span class="english-word">desk</span>
+          <span class="translation">письменный стол</span>
+        </div>
+
+        <div class="word">
+          <span class="english-word">wardrobe</span>
+          <span class="translation">шкаф</span>
+        </div>
+
+        <div class="word">
+          <span class="english-word">cozy</span>
+          <span class="translation">уютный</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- SECTION 1: VOCABULARY QUIZ -->
+
+    <div class="quiz">
+
+      <button class="toggle-btn" id="toggleVocabQuiz">
+        🎮 Show Vocabulary Quiz
+      </button>
+
+      <div class="quiz-content" id="vocabQuizContent">
+
+        <div class="section-title">🎮 VOCABULARY GAME</div>
+
+        <div class="question" id="vocabQuestionText"></div>
+
+        <div class="answers" id="vocabAnswersContainer"></div>
+
+        <div class="quiz-result" id="vocabQuizResult"></div>
+
+        <button class="restart-btn" id="vocabRestartBtn">
+          Try Again
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- SECTION 2: READING COMPREHENSION QUIZ -->
+
+    <div class="quiz">
+
+      <div class="section-title">🧠 READING COMPREHENSION</div>
+
+      <div class="question" id="readingQuestionText"></div>
+
+      <div class="answers" id="readingAnswersContainer"></div>
+
+      <div class="quiz-result" id="readingQuizResult"></div>
+
+      <button class="restart-btn" id="readingRestartBtn">
+        Try Again
+      </button>
+
+    </div>
+
   </div>
+
+
+  <script>
+
+    /* =========================
+       SHOW / HIDE TEXT
+    ========================== */
+
+    const toggleText = document.getElementById("toggleText");
+    const storyText = document.getElementById("storyText");
+
+    toggleText.addEventListener("click", function() {
+      storyText.classList.toggle("show");
+      toggleText.innerHTML = storyText.classList.contains("show") ? "📕 Hide Text" : "📖 Show Text";
+    });
+
+
+    /* =========================
+       SHOW / HIDE VOCABULARY
+    ========================== */
+
+    const toggleVocabulary = document.getElementById("toggleVocabulary");
+    const vocabularyContent = document.getElementById("vocabularyContent");
+
+    toggleVocabulary.addEventListener("click", function() {
+      vocabularyContent.classList.toggle("show");
+      toggleVocabulary.innerHTML = vocabularyContent.classList.contains("show") ? "📕 Hide Vocabulary" : "📚 Show Vocabulary";
+    });
+
+
+    /* =========================
+       SHOW / HIDE VOCABULARY QUIZ
+    ========================== */
+
+    const toggleVocabQuiz = document.getElementById("toggleVocabQuiz");
+    const vocabQuizContent = document.getElementById("vocabQuizContent");
+
+    toggleVocabQuiz.addEventListener("click", function() {
+      vocabQuizContent.classList.toggle("show");
+      toggleVocabQuiz.innerHTML = vocabQuizContent.classList.contains("show") ? "📕 Hide Vocabulary Quiz" : "🎮 Show Vocabulary Quiz";
+    });
+
+
+    /* =========================
+       QUIZ ENGINE FUNCTION
+    ========================== */
+
+    function createQuiz(questionsData, elements) {
+      let currentQuestion = 0;
+      let score = 0;
+
+      function showQuestion() {
+        const current = questionsData[currentQuestion];
+
+        elements.questionText.innerHTML = `
+          <span class="question-number">
+            Question ${currentQuestion + 1} of ${questionsData.length}
+          </span>
+          ${current.question}
+        `;
+
+        elements.answersContainer.innerHTML = "";
+        elements.quizResult.classList.remove("show");
+
+        current.answers.forEach(answer => {
+          const button = document.createElement("button");
+          button.className = "answer-btn";
+          button.textContent = answer;
+
+          button.addEventListener("click", function() {
+            const allButtons = elements.answersContainer.querySelectorAll(".answer-btn");
+            allButtons.forEach(btn => btn.disabled = true);
+
+            if (answer === current.correct) {
+              button.classList.add("correct");
+              score++;
+              elements.quizResult.textContent = "✓ Correct!";
+              elements.quizResult.style.color = "#166534";
+            } else {
+              button.classList.add("wrong");
+              allButtons.forEach(btn => {
+                if (btn.textContent === current.correct) {
+                  btn.classList.add("correct");
+                }
+              });
+              elements.quizResult.textContent = `The correct answer is: ${current.correct}`;
+              elements.quizResult.style.color = "#991b1b";
+            }
+
+            elements.quizResult.classList.add("show");
+
+            setTimeout(() => {
+              currentQuestion++;
+              if (currentQuestion < questionsData.length) {
+                showQuestion();
+              } else {
+                showFinalResult();
+              }
+            }, 1500);
+          });
+
+          elements.answersContainer.appendChild(button);
+        });
+      }
+
+      function showFinalResult() {
+        elements.questionText.innerHTML = "🎉 Quiz Complete!";
+        elements.answersContainer.innerHTML = "";
+        elements.quizResult.textContent = `Your score: ${score}/${questionsData.length}`;
+        elements.quizResult.style.color = "#2563eb";
+        elements.quizResult.classList.add("show");
+        elements.restartBtn.classList.add("show");
+      }
+
+      elements.restartBtn.addEventListener("click", function() {
+        currentQuestion = 0;
+        score = 0;
+        elements.restartBtn.classList.remove("show");
+        elements.quizResult.classList.remove("show");
+        showQuestion();
+      });
+
+      showQuestion();
+    }
+
+
+    /* =========================
+       1. VOCABULARY QUIZ DATA (8 QUESTIONS)
+    ========================== */
+
+    const vocabQuestions = [
+      {
+        question: 'What does "comfortable" mean?',
+        answers: ["удобный, комфортный", "уютный", "гостиная"],
+        correct: "удобный, комфортный"
+      },
+      {
+        question: 'What does "living room" mean?',
+        answers: ["спальня", "гостиная", "кухня"],
+        correct: "гостиная"
+      },
+      {
+        question: 'What does "kitchen" mean?',
+        answers: ["кухня", "шкаф", "холодильник"],
+        correct: "кухня"
+      },
+      {
+        question: 'What does "bedroom" mean?',
+        answers: ["гостиная", "спальня", "письменный стол"],
+        correct: "спальня"
+      },
+      {
+        question: 'What does "fridge" mean?',
+        answers: ["шкаф", "письменный стол", "холодильник"],
+        correct: "холодильник"
+      },
+      {
+        question: 'What does "desk" mean?',
+        answers: ["письменный стол", "шкаф", "кухня"],
+        correct: "письменный стол"
+      },
+      {
+        question: 'What does "wardrobe" mean?',
+        answers: ["холодильник", "шкаф", "спальня"],
+        correct: "шкаф"
+      },
+      {
+        question: 'What does "cozy" mean?',
+        answers: ["уютный", "удобный, комфортный", "гостиная"],
+        correct: "уютный"
+      }
+    ];
+
+    createQuiz(vocabQuestions, {
+      questionText: document.getElementById("vocabQuestionText"),
+      answersContainer: document.getElementById("vocabAnswersContainer"),
+      quizResult: document.getElementById("vocabQuizResult"),
+      restartBtn: document.getElementById("vocabRestartBtn")
+    });
+
+
+    /* =========================
+       2. READING QUIZ DATA (5 QUESTIONS)
+    ========================== */
+
+    const readingQuestions = [
+      {
+        question: 'How many bedrooms are in the home?',
+        answers: ["One", "Two", "Three"],
+        correct: "Two"
+      },
+      {
+        question: 'Which room is the person’s favourite?',
+        answers: ["The kitchen", "The bedroom", "The living room"],
+        correct: "The living room"
+      },
+      {
+        question: 'What is in the living room?',
+        answers: ["A big sofa, a table, and a TV", "A desk, a chair, and a bed", "A fridge, a table, and chairs"],
+        correct: "A big sofa, a table, and a TV"
+      },
+      {
+        question: 'Who often cooks in the kitchen?',
+        answers: ["The narrator", "My mother", "My father"],
+        correct: "My mother"
+      },
+      {
+        question: 'Why does the person like spending time in their bedroom?',
+        answers: ["Because it is quiet and comfortable", "Because it is very big", "Because there is a TV"],
+        correct: "Because it is quiet and comfortable"
+      }
+    ];
+
+    createQuiz(readingQuestions, {
+      questionText: document.getElementById("readingQuestionText"),
+      answersContainer: document.getElementById("readingAnswersContainer"),
+      quizResult: document.getElementById("readingQuizResult"),
+      restartBtn: document.getElementById("readingRestartBtn")
+    });
+
+  </script>
 
 </body>
 </html>
