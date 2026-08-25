@@ -3,12 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>01. My Family — Easy English Audio</title>
-  <link rel="preconnect" href="https://googleapis.com">
-  <link rel="preconnect" href="https://gstatic.com" crossorigin>
-  <link href="https://googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
       background-color: #f8fafc;
@@ -18,57 +24,215 @@
       display: flex;
       justify-content: center;
     }
+
     .player-card {
       background: #ffffff;
       padding: 30px;
       border-radius: 16px;
-      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      box-shadow: 0 4px 20px -5px rgb(0 0 0 / 0.08);
       width: 100%;
       max-width: 450px;
     }
+
     .back-btn {
       display: inline-block;
       color: #64748b;
       text-decoration: none;
       font-size: 14px;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       font-weight: 500;
     }
+
     .back-btn:hover {
       color: #0f172a;
     }
+
     .category {
       font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
       color: #64748b;
       font-weight: 600;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
+
     h3 {
-      font-size: 22px;
+      font-size: 24px;
       color: #2563eb;
-      margin-top: 0;
+      margin: 0 0 10px;
+    }
+
+    .info {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .tag {
+      background-color: #eff6ff;
+      color: #2563eb;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 10px;
+      border-radius: 20px;
+    }
+
+    .listen-box {
+      background-color: #f8fafc;
+      padding: 18px;
+      border-radius: 12px;
       margin-bottom: 20px;
     }
+
+    .listen-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #64748b;
+      margin-bottom: 8px;
+    }
+
+    .listen-text {
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.5;
+      margin: 0 0 15px;
+    }
+
     audio {
       width: 100%;
       border-radius: 8px;
     }
+
+    .tip {
+      border-left: 3px solid #2563eb;
+      padding: 12px 14px;
+      background-color: #f8fafc;
+      border-radius: 0 10px 10px 0;
+      margin-bottom: 24px;
+    }
+
+    .tip-title {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .tip-text {
+      font-size: 13px;
+      line-height: 1.5;
+      color: #64748b;
+      margin: 0;
+    }
+
+    .vocabulary {
+      border-top: 1px solid #e2e8f0;
+      padding-top: 22px;
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #64748b;
+      margin-bottom: 14px;
+    }
+
+    .word {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f1f5f9;
+      font-size: 14px;
+    }
+
+    .word:last-child {
+      border-bottom: none;
+    }
+
+    .english-word {
+      font-weight: 600;
+      color: #1e293b;
+    }
+
+    .translation {
+      color: #64748b;
+      text-align: right;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 20px 14px;
+      }
+
+      .player-card {
+        padding: 22px;
+      }
+    }
   </style>
 </head>
+
 <body>
 
   <div class="player-card">
-    <!-- Ссылка "index.html" вернет пользователя на главную страницу -->
-    <a href="index.html" class="back-btn">⬅ Назад к списку</a>
+
+    <a href="index.html" class="back-btn">← Back to the list</a>
 
     <div class="category">My World</div>
+
     <h3>01. My Family</h3>
 
-    <audio controls src="./01_My_Family.mp3">
-      Your browser does not support audio.
-    </audio>
+    <div class="info">
+      <span class="tag">A1</span>
+      <span class="tag">Reading & Listening</span>
+    </div>
+
+    <div class="listen-box">
+      <div class="listen-title">🎧 LISTEN TO THE TEXT</div>
+
+      <p class="listen-text">
+        Listen carefully. You can follow the text in your book.
+      </p>
+
+      <audio controls src="./01_My_Family.mp3">
+        Your browser does not support audio.
+      </audio>
+    </div>
+
+    <div class="tip">
+      <div class="tip-title">💡 Listening Tip</div>
+
+      <p class="tip-text">
+        Listen once without reading. Then listen again and follow the text in your book.
+      </p>
+    </div>
+
+    <div class="vocabulary">
+      <div class="section-title">📚 KEY VOCABULARY</div>
+
+      <div class="word">
+        <span class="english-word">younger</span>
+        <span class="translation">младше</span>
+      </div>
+
+      <div class="word">
+        <span class="english-word">hardworking</span>
+        <span class="translation">трудолюбивый</span>
+      </div>
+
+      <div class="word">
+        <span class="english-word">playful</span>
+        <span class="translation">игривый</span>
+      </div>
+
+      <div class="word">
+        <span class="english-word">sofa</span>
+        <span class="translation">диван</span>
+      </div>
+    </div>
+
   </div>
 
 </body>
