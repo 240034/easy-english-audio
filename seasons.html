@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>09. The Four Seasons — Easy English Audio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; margin: 0; padding: 40px 20px; display: flex; justify-content: center; }
+    .player-card { background: #ffffff; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px -5px rgb(0 0 0 / 0.08); width: 100%; max-width: 450px; }
+    .back-btn { display: inline-block; color: #64748b; text-decoration: none; font-size: 14px; margin-bottom: 24px; font-weight: 500; }
+    .back-btn:hover { color: #0f172a; }
+    .category { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: #64748b; font-weight: 600; margin-bottom: 6px; }
+    h3 { font-size: 24px; color: #2563eb; margin: 0 0 10px; }
+    .info { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+    .tag { background-color: #eff6ff; color: #2563eb; font-size: 12px; font-weight: 600; padding: 6px 10px; border-radius: 20px; }
+    .listen-box { background-color: #f8fafc; padding: 18px; border-radius: 12px; margin-bottom: 16px; }
+    .listen-title, .section-title { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; color: #64748b; margin-bottom: 8px; }
+    .listen-text { font-size: 13px; color: #64748b; line-height: 1.5; margin: 0 0 15px; }
+    audio { width: 100%; border-radius: 8px; }
+    .toggle-btn { width: 100%; border: 1px solid #dbeafe; background-color: #eff6ff; color: #2563eb; padding: 12px 15px; border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+    .toggle-btn:hover { background-color: #dbeafe; }
+    .text-section { margin: 20px 0 24px; }
+    .story-text { display: none; margin-top: 12px; padding: 18px; background-color: #f8fafc; border-radius: 12px; font-size: 14px; line-height: 1.8; color: #334155; }
+    .story-text.show { display: block; }
+    .story-text p { margin: 0 0 16px; }
+    .story-text p:last-child { margin-bottom: 0; }
+    .vocabulary { border-top: 1px solid #e2e8f0; padding-top: 22px; }
+    .vocabulary-content { display: none; margin-top: 14px; }
+    .vocabulary-content.show { display: block; }
+    .word { display: flex; justify-content: space-between; gap: 20px; padding: 10px 0; border-bottom: 1px solid #f1f5f9; font-size: 14px; }
+    .word:last-child { border-bottom: none; }
+    .english-word { font-weight: 600; color: #1e293b; }
+    .translation { color: #64748b; text-align: right; }
+    .quiz { margin-top: 24px; padding-top: 22px; border-top: 1px solid #e2e8f0; }
+    .quiz-content { display: none; margin-top: 14px; }
+    .quiz-content.show { display: block; }
+    .question { font-size: 15px; font-weight: 600; line-height: 1.5; margin: 8px 0 14px; }
+    .question-number { display: block; font-size: 12px; color: #64748b; font-weight: 500; margin-bottom: 8px; }
+    .answers { display: grid; gap: 8px; }
+    .answer-btn { border: 1px solid #e2e8f0; background-color: #ffffff; color: #334155; padding: 12px; border-radius: 10px; text-align: left; font-family: 'Inter', sans-serif; font-size: 14px; cursor: pointer; transition: 0.2s; }
+    .answer-btn:hover:not(:disabled) { background-color: #f8fafc; border-color: #93c5fd; }
+    .answer-btn:disabled { cursor: default; }
+    .answer-btn.correct { background-color: #dcfce7; border-color: #86efac; color: #166534; }
+    .answer-btn.wrong { background-color: #fee2e2; border-color: #fca5a5; color: #991b1b; }
+    .quiz-result { display: none; margin-top: 12px; font-size: 13px; font-weight: 600; }
+    .quiz-result.show { display: block; }
+    .restart-btn { display: none; width: 100%; margin-top: 16px; border: none; background-color: #2563eb; color: white; padding: 12px; border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; }
+    .restart-btn.show { display: block; }
+    @media (max-width: 480px) { body { padding: 20px 14px; } .player-card { padding: 22px; } }
+  </style>
+</head>
+<body>
+  <div class="player-card">
+    <a href="index.html" class="back-btn">⬅ Назад к списку</a>
+    <div class="category">Animals & Nature</div>
+    <h3>09. The Four Seasons</h3>
+    <div class="info">
+      <span class="tag">A1</span>
+      <span class="tag">Reading & Listening</span>
+    </div>
+    <div class="listen-box">
+      <div class="listen-title">🎧 LISTEN TO THE TEXT</div>
+      <p class="listen-text">Listen carefully. You can follow the text below.</p>
+      <audio controls src="./09_Seasons.mp3">
+        Your browser does not support audio.
+      </audio>
+    </div>
+    <div class="text-section">
+      <button class="toggle-btn" id="toggleText">📖 Show Text</button>
+      <div class="story-text" id="storyText">
+        <p>The year is divided into four distinct seasons: spring, summer, autumn, and winter.</p>
+        <p>In spring, nature seems to come back to life as flowers bloom and trees grow green leaves.</p>
+        <p>Summer brings long hot days, making it ideal for swimming and outdoor activities.</p>
+        <p>During autumn, temperatures slowly drop and leaves fall off the trees in golden shades.</p>
+        <p>Winter brings cold weather and snow, offering fun activities like skating and building snowmen.</p>
+        <p>Each season offers unique activities and changes that make every time of year special.</p>
+      </div>
+    </div>
+    <div class="vocabulary">
+      <button class="toggle-btn" id="toggleVocabulary">📚 Show Vocabulary</button>
+      <div class="vocabulary-content" id="vocabularyContent">
+        <div class="section-title">📚 KEY VOCABULARY</div>
+        <div class="word"><span class="english-word">season</span><span class="translation">время года</span></div>
+        <div class="word"><span class="english-word">come back to life</span><span class="translation">оживать</span></div>
+        <div class="word"><span class="english-word">slowly</span><span class="translation">постепенно</span></div>
+        <div class="word"><span class="english-word">leaf/leaves</span><span class="translation">лист / листья</span></div>
+        <div class="word"><span class="english-word">fall</span><span class="translation">падать</span></div>
+        <div class="word"><span class="english-word">skating</span><span class="translation">катание на коньках</span></div>
+        <div class="word"><span class="english-word">offer</span><span class="translation">предлагать</span></div>
+      </div>
+    </div>
+    <div class="quiz">
+      <button class="toggle-btn" id="toggleVocabQuiz">🎮 Show Vocabulary Quiz</button>
+      <div class="quiz-content" id="vocabQuizContent">
+        <div class="section-title">🎮 VOCABULARY GAME</div>
+        <div class="question" id="vocabQuestionText"></div>
+        <div class="answers" id="vocabAnswersContainer"></div>
+        <div class="quiz-result" id="vocabQuizResult"></div>
+        <button class="restart-btn" id="vocabRestartBtn">Try Again</button>
+      </div>
+    </div>
+    <div class="quiz">
+      <div class="section-title">🧠 READING COMPREHENSION</div>
+      <div class="question" id="readingQuestionText"></div>
+      <div class="answers" id="readingAnswersContainer"></div>
+      <div class="quiz-result" id="readingQuizResult"></div>
+      <button class="restart-btn" id="readingRestartBtn">Try Again</button>
+    </div>
+  </div>
+
+  <script>
+    const toggleText = document.getElementById("toggleText");
+    const storyText = document.getElementById("storyText");
+    toggleText.addEventListener("click", function() {
+      storyText.classList.toggle("show");
+      toggleText.innerHTML = storyText.classList.contains("show") ? "📕 Hide Text" : "📖 Show Text";
+    });
+
+    const toggleVocabulary = document.getElementById("toggleVocabulary");
+    const vocabularyContent = document.getElementById("vocabularyContent");
+    toggleVocabulary.addEventListener("click", function() {
+      vocabularyContent.classList.toggle("show");
+      toggleVocabulary.innerHTML = vocabularyContent.classList.contains("show") ? "📕 Hide Vocabulary" : "📚 Show Vocabulary";
+    });
+
+    const toggleVocabQuiz = document.getElementById("toggleVocabQuiz");
+    const vocabQuizContent = document.getElementById("vocabQuizContent");
+    toggleVocabQuiz.addEventListener("click", function() {
+      vocabQuizContent.classList.toggle("show");
+      toggleVocabQuiz.innerHTML = vocabQuizContent.classList.contains("show") ? "📕 Hide Vocabulary Quiz" : "🎮 Show Vocabulary Quiz";
+    });
+
+    function createQuiz(questionsData, elements) {
+      let currentQuestion = 0;
+      let score = 0;
+      function showQuestion() {
+        const current = questionsData[currentQuestion];
+        elements.questionText.innerHTML = `<span class="question-number">Question ${currentQuestion + 1} of ${questionsData.length}</span>${current.question}`;
+        elements.answersContainer.innerHTML = "";
+        elements.quizResult.classList.remove("show");
+        current.answers.forEach(answer => {
+          const button = document.createElement("button");
+          button.className = "answer-btn";
+          button.textContent = answer;
+          button.addEventListener("click", function() {
+            const allButtons = elements.answersContainer.querySelectorAll(".answer-btn");
+            allButtons.forEach(btn => btn.disabled = true);
+            if (answer === current.correct) {
+              button.classList.add("correct");
+              score++;
+              elements.quizResult.textContent = "✓ Correct!";
+              elements.quizResult.style.color = "#166534";
+            } else {
+              button.classList.add("wrong");
+              allButtons.forEach(btn => {
+                if (btn.textContent === current.correct) btn.classList.add("correct");
+              });
+              elements.quizResult.textContent = `The correct answer is: ${current.correct}`;
+              elements.quizResult.style.color = "#991b1b";
+            }
+            elements.quizResult.classList.add("show");
+            setTimeout(() => {
+              currentQuestion++;
+              if (currentQuestion < questionsData.length) showQuestion();
+              else showFinalResult();
+            }, 1500);
+          });
+          elements.answersContainer.appendChild(button);
+        });
+      }
+      function showFinalResult() {
+        elements.questionText.innerHTML = "🎉 Quiz Complete!";
+        elements.answersContainer.innerHTML = "";
+        elements.quizResult.textContent = `Your score: ${score}/${questionsData.length}`;
+        elements.quizResult.style.color = "#2563eb";
+        elements.quizResult.classList.add("show");
+        elements.restartBtn.classList.add("show");
+      }
+      elements.restartBtn.addEventListener("click", function() {
+        currentQuestion = 0;
+        score = 0;
+        elements.restartBtn.classList.remove("show");
+        elements.quizResult.classList.remove("show");
+        showQuestion();
+      });
+      showQuestion();
+    }
+
+    const vocabQuestions = [
+      { question: 'What does "season" mean?', answers: ["время года", "месяц", "погода"], correct: "время года" },
+      { question: 'What does "come back to life" mean?', answers: ["оживать", "умирать", "засыпать"], correct: "оживать" },
+      { question: 'What does "slowly" mean?', answers: ["постепенно", "быстро", "резко"], correct: "постепенно" },
+      { question: 'What does "leaves" mean?', answers: ["листья", "ветки", "цветы"], correct: "листья" },
+      { question: 'What does "fall" mean?', answers: ["падать", "расти", "лететь"], correct: "падать" },
+      { question: 'What does "skating" mean?', answers: ["катание на коньках", "плавание", "бег"], correct: "катание на коньках" },
+      { question: 'What does "offer" mean?', answers: ["предлагать", "брать", "искать"], correct: "предлагать" }
+    ];
+
+    createQuiz(vocabQuestions, {
+      questionText: document.getElementById("vocabQuestionText"),
+      answersContainer: document.getElementById("vocabAnswersContainer"),
+      quizResult: document.getElementById("vocabQuizResult"),
+      restartBtn: document.getElementById("vocabRestartBtn")
+    });
+
+    const readingQuestions = [
+      { question: 'What happens in spring?', answers: ["Nature comes back to life and flowers bloom", "Leaves fall", "Snow falls"], correct: "Nature comes back to life and flowers bloom" },
+      { question: 'Which season is ideal for swimming?', answers: ["Summer", "Winter", "Autumn"], correct: "Summer" },
+      { question: 'What winter activities are mentioned?', answers: ["Skating and building snowmen", "Swimming and sunbathing", "Hiking in the heat"], correct: "Skating and building snowmen" }
+    ];
+
+    createQuiz(readingQuestions, {
+      questionText: document.getElementById("readingQuestionText"),
+      answersContainer: document.getElementById("readingAnswersContainer"),
+      quizResult: document.getElementById("readingQuizResult"),
+      restartBtn: document.getElementById("readingRestartBtn")
+    });
+  </script>
+</body>
+</html>
