@@ -78,6 +78,8 @@
       border-radius: 20px;
     }
 
+    /* AUDIO */
+
     .listen-box {
       background-color: #f8fafc;
       padding: 18px;
@@ -106,11 +108,7 @@
       border-radius: 8px;
     }
 
-    /* SHOW / HIDE TEXT */
-
-    .text-section {
-      margin: 20px 0 24px;
-    }
+    /* BUTTONS */
 
     .toggle-btn {
       width: 100%;
@@ -128,6 +126,12 @@
 
     .toggle-btn:hover {
       background-color: #dbeafe;
+    }
+
+    /* TEXT */
+
+    .text-section {
+      margin: 20px 0 24px;
     }
 
     .story-text {
@@ -183,6 +187,15 @@
       padding-top: 22px;
     }
 
+    .vocabulary-content {
+      display: none;
+      margin-top: 14px;
+    }
+
+    .vocabulary-content.show {
+      display: block;
+    }
+
     .word {
       display: flex;
       justify-content: space-between;
@@ -221,6 +234,14 @@
       margin: 8px 0 14px;
     }
 
+    .question-number {
+      display: block;
+      font-size: 12px;
+      color: #64748b;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
     .answers {
       display: grid;
       gap: 8px;
@@ -239,9 +260,13 @@
       transition: 0.2s;
     }
 
-    .answer-btn:hover {
+    .answer-btn:hover:not(:disabled) {
       background-color: #f8fafc;
       border-color: #93c5fd;
+    }
+
+    .answer-btn:disabled {
+      cursor: default;
     }
 
     .answer-btn.correct {
@@ -267,20 +292,26 @@
       display: block;
     }
 
-    .next-btn {
-      display: block;
+    .restart-btn {
+      display: none;
       width: 100%;
-      margin-top: 24px;
-      padding: 13px;
+      margin-top: 16px;
       border: none;
-      border-radius: 10px;
       background-color: #2563eb;
       color: white;
+      padding: 12px;
+      border-radius: 10px;
       font-family: 'Inter', sans-serif;
       font-size: 14px;
       font-weight: 600;
       cursor: pointer;
     }
+
+    .restart-btn.show {
+      display: block;
+    }
+
+    /* MOBILE */
 
     @media (max-width: 480px) {
       body {
@@ -298,7 +329,11 @@
 
   <div class="player-card">
 
+    <!-- BACK -->
+
     <a href="index.html" class="back-btn">← Back to the list</a>
+
+    <!-- TITLE -->
 
     <div class="category">My World</div>
 
@@ -312,6 +347,7 @@
     <!-- AUDIO -->
 
     <div class="listen-box">
+
       <div class="listen-title">🎧 LISTEN TO THE TEXT</div>
 
       <p class="listen-text">
@@ -321,6 +357,7 @@
       <audio controls src="./01_My_Family.mp3">
         Your browser does not support audio.
       </audio>
+
     </div>
 
     <!-- SHOW / HIDE TEXT -->
@@ -369,82 +406,86 @@
 
     </div>
 
-    <!-- TIP -->
+    <!-- LISTENING TIP -->
 
     <div class="tip">
+
       <div class="tip-title">💡 Listening Tip</div>
 
       <p class="tip-text">
         First, listen without reading. Then listen again and follow the text.
       </p>
+
     </div>
 
     <!-- VOCABULARY -->
 
     <div class="vocabulary">
 
-      <div class="section-title">📚 KEY VOCABULARY</div>
+      <button class="toggle-btn" id="toggleVocabulary">
+        📚 Show Vocabulary
+      </button>
 
-      <div class="word">
-        <span class="english-word">younger</span>
-        <span class="translation">младше</span>
-      </div>
+      <div class="vocabulary-content" id="vocabularyContent">
 
-      <div class="word">
-        <span class="english-word">hardworking</span>
-        <span class="translation">трудолюбивый</span>
-      </div>
+        <div class="section-title">📚 KEY VOCABULARY</div>
 
-      <div class="word">
-        <span class="english-word">playful</span>
-        <span class="translation">игривый</span>
-      </div>
+        <div class="word">
+          <span class="english-word">younger</span>
+          <span class="translation">младше</span>
+        </div>
 
-      <div class="word">
-        <span class="english-word">sofa</span>
-        <span class="translation">диван</span>
+        <div class="word">
+          <span class="english-word">hardworking</span>
+          <span class="translation">трудолюбивый</span>
+        </div>
+
+        <div class="word">
+          <span class="english-word">playful</span>
+          <span class="translation">игривый</span>
+        </div>
+
+        <div class="word">
+          <span class="english-word">sofa</span>
+          <span class="translation">диван</span>
+        </div>
+
       </div>
 
     </div>
 
-    <!-- VOCABULARY GAME -->
+    <!-- VOCABULARY QUIZ -->
 
     <div class="quiz">
 
       <div class="section-title">🧠 VOCABULARY GAME</div>
 
-      <div class="question">
-        What does <strong>playful</strong> mean?
-      </div>
+      <div class="question" id="questionText"></div>
 
-      <div class="answers">
-        <button class="answer-btn" data-correct="false">
-          трудолюбивый
-        </button>
-
-        <button class="answer-btn" data-correct="true">
-          игривый
-        </button>
-
-        <button class="answer-btn" data-correct="false">
-          младше
-        </button>
-      </div>
+      <div class="answers" id="answersContainer"></div>
 
       <div class="quiz-result" id="quizResult"></div>
+
+      <button class="restart-btn" id="restartBtn">
+        Try Again
+      </button>
 
     </div>
 
   </div>
 
+
   <script>
 
-    /* SHOW / HIDE TEXT */
+    /* =========================
+       SHOW / HIDE TEXT
+    ========================== */
 
     const toggleText = document.getElementById("toggleText");
     const storyText = document.getElementById("storyText");
 
     toggleText.addEventListener("click", function() {
+
       storyText.classList.toggle("show");
 
       if (storyText.classList.contains("show")) {
@@ -452,40 +493,228 @@
       } else {
         toggleText.innerHTML = "📖 Show Text";
       }
+
     });
 
 
-    /* VOCABULARY GAME */
+    /* =========================
+       SHOW / HIDE VOCABULARY
+    ========================== */
 
-    const answerButtons = document.querySelectorAll(".answer-btn");
-    const quizResult = document.getElementById("quizResult");
+    const toggleVocabulary = document.getElementById("toggleVocabulary");
+    const vocabularyContent = document.getElementById("vocabularyContent");
 
-    answerButtons.forEach(button => {
-      button.addEventListener("click", function() {
+    toggleVocabulary.addEventListener("click", function() {
 
-        answerButtons.forEach(btn => {
-          btn.disabled = true;
+      vocabularyContent.classList.toggle("show");
+
+      if (vocabularyContent.classList.contains("show")) {
+        toggleVocabulary.innerHTML = "📕 Hide Vocabulary";
+      } else {
+        toggleVocabulary.innerHTML = "📚 Show Vocabulary";
+      }
+
+    });
+
+
+    /* =========================
+       VOCABULARY QUIZ
+    ========================== */
+
+    const questions = [
+
+      {
+        question: 'What does "younger" mean?',
+        answers: [
+          "игривый",
+          "младше",
+          "диван"
+        ],
+        correct: "младше"
+      },
+
+      {
+        question: 'What does "hardworking" mean?',
+        answers: [
+          "трудолюбивый",
+          "игривый",
+          "младше"
+        ],
+        correct: "трудолюбивый"
+      },
+
+      {
+        question: 'What does "playful" mean?',
+        answers: [
+          "диван",
+          "игривый",
+          "трудолюбивый"
+        ],
+        correct: "игривый"
+      },
+
+      {
+        question: 'What does "sofa" mean?',
+        answers: [
+          "младше",
+          "диван",
+          "игривый"
+        ],
+        correct: "диван"
+      }
+
+    ];
+
+
+    let currentQuestion = 0;
+    let score = 0;
+
+
+    const questionText =
+      document.getElementById("questionText");
+
+    const answersContainer =
+      document.getElementById("answersContainer");
+
+    const quizResult =
+      document.getElementById("quizResult");
+
+    const restartBtn =
+      document.getElementById("restartBtn");
+
+
+    function showQuestion() {
+
+      const current = questions[currentQuestion];
+
+      questionText.innerHTML = `
+        <span class="question-number">
+          Question ${currentQuestion + 1} of ${questions.length}
+        </span>
+        ${current.question}
+      `;
+
+      answersContainer.innerHTML = "";
+
+      quizResult.classList.remove("show");
+
+
+      current.answers.forEach(answer => {
+
+        const button = document.createElement("button");
+
+        button.className = "answer-btn";
+        button.textContent = answer;
+
+
+        button.addEventListener("click", function() {
+
+          const allButtons =
+            answersContainer.querySelectorAll(".answer-btn");
+
+
+          allButtons.forEach(btn => {
+            btn.disabled = true;
+          });
+
+
+          if (answer === current.correct) {
+
+            button.classList.add("correct");
+
+            score++;
+
+            quizResult.textContent = "✓ Correct!";
+            quizResult.style.color = "#166534";
+
+          } else {
+
+            button.classList.add("wrong");
+
+            allButtons.forEach(btn => {
+
+              if (btn.textContent === current.correct) {
+                btn.classList.add("correct");
+              }
+
+            });
+
+            quizResult.textContent =
+              `The correct answer is: ${current.correct}`;
+
+            quizResult.style.color = "#991b1b";
+
+          }
+
+
+          quizResult.classList.add("show");
+
+
+          setTimeout(() => {
+
+            currentQuestion++;
+
+            if (currentQuestion < questions.length) {
+
+              showQuestion();
+
+            } else {
+
+              showFinalResult();
+
+            }
+
+          }, 1500);
+
         });
 
-        if (this.dataset.correct === "true") {
-          this.classList.add("correct");
 
-          quizResult.textContent = "✓ Correct! Playful means игривый.";
-          quizResult.style.color = "#166534";
-
-        } else {
-          this.classList.add("wrong");
-
-          document.querySelector('[data-correct="true"]').classList.add("correct");
-
-          quizResult.textContent = "Not quite. Playful means игривый.";
-          quizResult.style.color = "#991b1b";
-        }
-
-        quizResult.classList.add("show");
+        answersContainer.appendChild(button);
 
       });
+
+    }
+
+
+    /* FINAL RESULT */
+
+    function showFinalResult() {
+
+      questionText.innerHTML = "🎉 Quiz Complete!";
+
+      answersContainer.innerHTML = "";
+
+      quizResult.textContent =
+        `Your score: ${score}/${questions.length}`;
+
+      quizResult.style.color = "#2563eb";
+
+      quizResult.classList.add("show");
+
+      restartBtn.classList.add("show");
+
+    }
+
+
+    /* RESTART QUIZ */
+
+    restartBtn.addEventListener("click", function() {
+
+      currentQuestion = 0;
+      score = 0;
+
+      restartBtn.classList.remove("show");
+
+      quizResult.classList.remove("show");
+
+      showQuestion();
+
     });
+
+
+    /* START QUIZ */
+
+    showQuestion();
 
   </script>
 
