@@ -406,18 +406,6 @@
 
     </div>
 
-    <!-- LISTENING TIP -->
-
-    <div class="tip">
-
-      <div class="tip-title">💡 Listening Tip</div>
-
-      <p class="tip-text">
-        First, listen without reading. Then listen again and follow the text.
-      </p>
-
-    </div>
-
     <!-- VOCABULARY -->
 
     <div class="vocabulary">
@@ -454,11 +442,11 @@
 
     </div>
 
-    <!-- VOCABULARY QUIZ -->
+    <!-- COMPREHENSION QUIZ -->
 
     <div class="quiz">
 
-      <div class="section-title">🧠 VOCABULARY GAME</div>
+      <div class="section-title">🧠 READING COMPREHENSION QUIZ</div>
 
       <div class="question" id="questionText"></div>
 
@@ -518,49 +506,69 @@
 
 
     /* =========================
-       VOCABULARY QUIZ
+       COMPREHENSION QUIZ
     ========================== */
 
     const questions = [
 
       {
-        question: 'What does "younger" mean?',
+        question: 'How many people are there in the family?',
         answers: [
-          "игривый",
-          "младше",
-          "диван"
+          "Three",
+          "Four",
+          "Five"
         ],
-        correct: "младше"
+        correct: "Four"
       },
 
       {
-        question: 'What does "hardworking" mean?',
+        question: 'What does the mother like doing?',
         answers: [
-          "трудолюбивый",
-          "игривый",
-          "младше"
+          "Reading books and walking",
+          "Cooking and watching TV",
+          "Playing with a ball"
         ],
-        correct: "трудолюбивый"
+        correct: "Cooking and watching TV"
       },
 
       {
-        question: 'What does "playful" mean?',
+        question: 'What is the father like?',
         answers: [
-          "диван",
-          "игривый",
-          "трудолюбивый"
+          "Funny and hardworking",
+          "Kind and friendly",
+          "Playful and small"
         ],
-        correct: "игривый"
+        correct: "Funny and hardworking"
       },
 
       {
-        question: 'What does "sofa" mean?',
+        question: 'What is the dog\'s name?',
         answers: [
-          "младше",
-          "диван",
-          "игривый"
+          "Jack",
+          "Max",
+          "Charlie"
         ],
-        correct: "диван"
+        correct: "Max"
+      },
+
+      {
+        question: 'Where does Max like sleeping?',
+        answers: [
+          "On the bed",
+          "In the park",
+          "On the sofa"
+        ],
+        correct: "On the sofa"
+      },
+
+      {
+        question: 'What does the family usually do in the evening?',
+        answers: [
+          "Go to the park",
+          "Have dinner together",
+          "Play games outside"
+        ],
+        correct: "Have dinner together"
       }
 
     ];
