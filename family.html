@@ -157,29 +157,6 @@
       margin-bottom: 0;
     }
 
-    /* TIP */
-
-    .tip {
-      border-left: 3px solid #2563eb;
-      padding: 12px 14px;
-      background-color: #f8fafc;
-      border-radius: 0 10px 10px 0;
-      margin-bottom: 24px;
-    }
-
-    .tip-title {
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 5px;
-    }
-
-    .tip-text {
-      font-size: 13px;
-      line-height: 1.5;
-      color: #64748b;
-      margin: 0;
-    }
-
     /* VOCABULARY */
 
     .vocabulary {
@@ -219,12 +196,21 @@
       text-align: right;
     }
 
-    /* QUIZ */
+    /* QUIZ COMMON STYLES */
 
     .quiz {
       margin-top: 24px;
       padding-top: 22px;
       border-top: 1px solid #e2e8f0;
+    }
+
+    .quiz-content {
+      display: none;
+      margin-top: 14px;
+    }
+
+    .quiz-content.show {
+      display: block;
     }
 
     .question {
@@ -442,19 +428,45 @@
 
     </div>
 
-    <!-- COMPREHENSION QUIZ -->
+    <!-- SECTION 1: VOCABULARY QUIZ -->
 
     <div class="quiz">
 
-      <div class="section-title">🧠 READING COMPREHENSION QUIZ</div>
+      <button class="toggle-btn" id="toggleVocabQuiz">
+        🎮 Show Vocabulary Quiz
+      </button>
 
-      <div class="question" id="questionText"></div>
+      <div class="quiz-content" id="vocabQuizContent">
 
-      <div class="answers" id="answersContainer"></div>
+        <div class="section-title">🎮 VOCABULARY GAME</div>
 
-      <div class="quiz-result" id="quizResult"></div>
+        <div class="question" id="vocabQuestionText"></div>
 
-      <button class="restart-btn" id="restartBtn">
+        <div class="answers" id="vocabAnswersContainer"></div>
+
+        <div class="quiz-result" id="vocabQuizResult"></div>
+
+        <button class="restart-btn" id="vocabRestartBtn">
+          Try Again
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- SECTION 2: READING COMPREHENSION QUIZ -->
+
+    <div class="quiz">
+
+      <div class="section-title">🧠 READING COMPREHENSION</div>
+
+      <div class="question" id="readingQuestionText"></div>
+
+      <div class="answers" id="readingAnswersContainer"></div>
+
+      <div class="quiz-result" id="readingQuizResult"></div>
+
+      <button class="restart-btn" id="readingRestartBtn">
         Try Again
       </button>
 
@@ -473,15 +485,8 @@
     const storyText = document.getElementById("storyText");
 
     toggleText.addEventListener("click", function() {
-
       storyText.classList.toggle("show");
-
-      if (storyText.classList.contains("show")) {
-        toggleText.innerHTML = "📕 Hide Text";
-      } else {
-        toggleText.innerHTML = "📖 Show Text";
-      }
-
+      toggleText.innerHTML = storyText.classList.contains("show") ? "📕 Hide Text" : "📖 Show Text";
     });
 
 
@@ -493,236 +498,185 @@
     const vocabularyContent = document.getElementById("vocabularyContent");
 
     toggleVocabulary.addEventListener("click", function() {
-
       vocabularyContent.classList.toggle("show");
-
-      if (vocabularyContent.classList.contains("show")) {
-        toggleVocabulary.innerHTML = "📕 Hide Vocabulary";
-      } else {
-        toggleVocabulary.innerHTML = "📚 Show Vocabulary";
-      }
-
+      toggleVocabulary.innerHTML = vocabularyContent.classList.contains("show") ? "📕 Hide Vocabulary" : "📚 Show Vocabulary";
     });
 
 
     /* =========================
-       COMPREHENSION QUIZ
+       SHOW / HIDE VOCABULARY QUIZ
     ========================== */
 
-    const questions = [
-
-      {
-        question: 'How many people are there in the family?',
-        answers: [
-          "Three",
-          "Four",
-          "Five"
-        ],
-        correct: "Four"
-      },
-
-      {
-        question: 'What does the mother like doing?',
-        answers: [
-          "Reading books and walking",
-          "Cooking and watching TV",
-          "Playing with a ball"
-        ],
-        correct: "Cooking and watching TV"
-      },
-
-      {
-        question: 'What is the father like?',
-        answers: [
-          "Funny and hardworking",
-          "Kind and friendly",
-          "Playful and small"
-        ],
-        correct: "Funny and hardworking"
-      },
-
-      {
-        question: 'What is the dog\'s name?',
-        answers: [
-          "Jack",
-          "Max",
-          "Charlie"
-        ],
-        correct: "Max"
-      },
-
-      {
-        question: 'Where does Max like sleeping?',
-        answers: [
-          "On the bed",
-          "In the park",
-          "On the sofa"
-        ],
-        correct: "On the sofa"
-      },
-
-      {
-        question: 'What does the family usually do in the evening?',
-        answers: [
-          "Go to the park",
-          "Have dinner together",
-          "Play games outside"
-        ],
-        correct: "Have dinner together"
-      }
-
-    ];
-
-
-    let currentQuestion = 0;
-    let score = 0;
-
-
-    const questionText =
-      document.getElementById("questionText");
-
-    const answersContainer =
-      document.getElementById("answersContainer");
-
-    const quizResult =
-      document.getElementById("quizResult");
-
-    const restartBtn =
-      document.getElementById("restartBtn");
-
-
-    function showQuestion() {
-
-      const current = questions[currentQuestion];
-
-      questionText.innerHTML = `
-        <span class="question-number">
-          Question ${currentQuestion + 1} of ${questions.length}
-        </span>
-        ${current.question}
-      `;
-
-      answersContainer.innerHTML = "";
-
-      quizResult.classList.remove("show");
-
-
-      current.answers.forEach(answer => {
-
-        const button = document.createElement("button");
-
-        button.className = "answer-btn";
-        button.textContent = answer;
-
-
-        button.addEventListener("click", function() {
-
-          const allButtons =
-            answersContainer.querySelectorAll(".answer-btn");
-
-
-          allButtons.forEach(btn => {
-            btn.disabled = true;
-          });
-
-
-          if (answer === current.correct) {
-
-            button.classList.add("correct");
-
-            score++;
-
-            quizResult.textContent = "✓ Correct!";
-            quizResult.style.color = "#166534";
-
-          } else {
-
-            button.classList.add("wrong");
-
-            allButtons.forEach(btn => {
-
-              if (btn.textContent === current.correct) {
-                btn.classList.add("correct");
-              }
-
-            });
-
-            quizResult.textContent =
-              `The correct answer is: ${current.correct}`;
-
-            quizResult.style.color = "#991b1b";
-
-          }
-
-
-          quizResult.classList.add("show");
-
-
-          setTimeout(() => {
-
-            currentQuestion++;
-
-            if (currentQuestion < questions.length) {
-
-              showQuestion();
-
-            } else {
-
-              showFinalResult();
-
-            }
-
-          }, 1500);
-
-        });
-
-
-        answersContainer.appendChild(button);
-
-      });
-
-    }
-
-
-    /* FINAL RESULT */
-
-    function showFinalResult() {
-
-      questionText.innerHTML = "🎉 Quiz Complete!";
-
-      answersContainer.innerHTML = "";
-
-      quizResult.textContent =
-        `Your score: ${score}/${questions.length}`;
-
-      quizResult.style.color = "#2563eb";
-
-      quizResult.classList.add("show");
-
-      restartBtn.classList.add("show");
-
-    }
-
-
-    /* RESTART QUIZ */
-
-    restartBtn.addEventListener("click", function() {
-
-      currentQuestion = 0;
-      score = 0;
-
-      restartBtn.classList.remove("show");
-
-      quizResult.classList.remove("show");
-
-      showQuestion();
-
+    const toggleVocabQuiz = document.getElementById("toggleVocabQuiz");
+    const vocabQuizContent = document.getElementById("vocabQuizContent");
+
+    toggleVocabQuiz.addEventListener("click", function() {
+      vocabQuizContent.classList.toggle("show");
+      toggleVocabQuiz.innerHTML = vocabQuizContent.classList.contains("show") ? "📕 Hide Vocabulary Quiz" : "🎮 Show Vocabulary Quiz";
     });
 
 
-    /* START QUIZ */
+    /* =========================
+       QUIZ ENGINE FUNCTION
+    ========================== */
 
-    showQuestion();
+    function createQuiz(questionsData, elements) {
+      let currentQuestion = 0;
+      let score = 0;
+
+      function showQuestion() {
+        const current = questionsData[currentQuestion];
+
+        elements.questionText.innerHTML = `
+          <span class="question-number">
+            Question ${currentQuestion + 1} of ${questionsData.length}
+          </span>
+          ${current.question}
+        `;
+
+        elements.answersContainer.innerHTML = "";
+        elements.quizResult.classList.remove("show");
+
+        current.answers.forEach(answer => {
+          const button = document.createElement("button");
+          button.className = "answer-btn";
+          button.textContent = answer;
+
+          button.addEventListener("click", function() {
+            const allButtons = elements.answersContainer.querySelectorAll(".answer-btn");
+            allButtons.forEach(btn => btn.disabled = true);
+
+            if (answer === current.correct) {
+              button.classList.add("correct");
+              score++;
+              elements.quizResult.textContent = "✓ Correct!";
+              elements.quizResult.style.color = "#166534";
+            } else {
+              button.classList.add("wrong");
+              allButtons.forEach(btn => {
+                if (btn.textContent === current.correct) {
+                  btn.classList.add("correct");
+                }
+              });
+              elements.quizResult.textContent = `The correct answer is: ${current.correct}`;
+              elements.quizResult.style.color = "#991b1b";
+            }
+
+            elements.quizResult.classList.add("show");
+
+            setTimeout(() => {
+              currentQuestion++;
+              if (currentQuestion < questionsData.length) {
+                showQuestion();
+              } else {
+                showFinalResult();
+              }
+            }, 1500);
+          });
+
+          elements.answersContainer.appendChild(button);
+        });
+      }
+
+      function showFinalResult() {
+        elements.questionText.innerHTML = "🎉 Quiz Complete!";
+        elements.answersContainer.innerHTML = "";
+        elements.quizResult.textContent = `Your score: ${score}/${questionsData.length}`;
+        elements.quizResult.style.color = "#2563eb";
+        elements.quizResult.classList.add("show");
+        elements.restartBtn.classList.add("show");
+      }
+
+      elements.restartBtn.addEventListener("click", function() {
+        currentQuestion = 0;
+        score = 0;
+        elements.restartBtn.classList.remove("show");
+        elements.quizResult.classList.remove("show");
+        showQuestion();
+      });
+
+      showQuestion();
+    }
+
+
+    /* =========================
+       1. VOCABULARY QUIZ DATA
+    ========================== */
+
+    const vocabQuestions = [
+      {
+        question: 'What does "younger" mean?',
+        answers: ["игривый", "младше", "диван"],
+        correct: "младше"
+      },
+      {
+        question: 'What does "hardworking" mean?',
+        answers: ["трудолюбивый", "игривый", "младше"],
+        correct: "трудолюбивый"
+      },
+      {
+        question: 'What does "playful" mean?',
+        answers: ["диван", "игривый", "трудолюбивый"],
+        correct: "игривый"
+      },
+      {
+        question: 'What does "sofa" mean?',
+        answers: ["младше", "диван", "игривый"],
+        correct: "диван"
+      }
+    ];
+
+    createQuiz(vocabQuestions, {
+      questionText: document.getElementById("vocabQuestionText"),
+      answersContainer: document.getElementById("vocabAnswersContainer"),
+      quizResult: document.getElementById("vocabQuizResult"),
+      restartBtn: document.getElementById("vocabRestartBtn")
+    });
+
+
+    /* =========================
+       2. READING QUIZ DATA
+    ========================== */
+
+    const readingQuestions = [
+      {
+        question: 'How many people are there in the family?',
+        answers: ["Three", "Four", "Five"],
+        correct: "Four"
+      },
+      {
+        question: 'What does the mother like doing?',
+        answers: ["Reading books and walking", "Cooking and watching TV", "Playing with a ball"],
+        correct: "Cooking and watching TV"
+      },
+      {
+        question: 'What is the father like?',
+        answers: ["Funny and hardworking", "Kind and friendly", "Playful and small"],
+        correct: "Funny and hardworking"
+      },
+      {
+        question: 'What is the dog\'s name?',
+        answers: ["Jack", "Max", "Charlie"],
+        correct: "Max"
+      },
+      {
+        question: 'Where does Max like sleeping?',
+        answers: ["On the bed", "In the park", "On the sofa"],
+        correct: "On the sofa"
+      },
+      {
+        question: 'What does the family usually do in the evening?',
+        answers: ["Go to the park", "Have dinner together", "Play games outside"],
+        correct: "Have dinner together"
+      }
+    ];
+
+    createQuiz(readingQuestions, {
+      questionText: document.getElementById("readingQuestionText"),
+      answersContainer: document.getElementById("readingAnswersContainer"),
+      quizResult: document.getElementById("readingQuizResult"),
+      restartBtn: document.getElementById("readingRestartBtn")
+    });
 
   </script>
 
