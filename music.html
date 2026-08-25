@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>03. Listening To Music — Easy English Audio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+      color: #1e293b;
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .player-card {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px -5px rgb(0 0 0 / 0.08);
+      width: 100%;
+      max-width: 450px;
+    }
+
+    .back-btn {
+      display: inline-block;
+      color: #64748b;
+      text-decoration: none;
+      font-size: 14px;
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+
+    .back-btn:hover {
+      color: #0f172a;
+    }
+
+    .category {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #64748b;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    h3 {
+      font-size: 24px;
+      color: #2563eb;
+      margin: 0 0 10px;
+    }
+
+    .info {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .tag {
+      background-color: #eff6ff;
+      color: #2563eb;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 10px;
+      border-radius: 20px;
+    }
+
+    /* AUDIO */
+
+    .listen-box {
+      background-color: #f8fafc;
+      padding: 18px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+    }
+
+    .listen-title,
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #64748b;
+      margin-bottom: 8px;
+    }
+
+    .listen-text {
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.5;
+      margin: 0 0 15px;
+    }
+
+    audio {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    /* BUTTONS */
+
+    .toggle-btn {
+      width: 100%;
+      border: 1px solid #dbeafe;
+      background-color: #eff6ff;
+      color: #2563eb;
+      padding: 12px 15px;
+      border-radius: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .toggle-btn:hover {
+      background-color: #dbeafe;
+    }
+
+    /* TEXT */
+
+    .text-section {
+      margin: 20px 0 24px;
+    }
+
+    .story-text {
+      display: none;
+      margin-top: 12px;
+      padding: 18px;
+      background-color: #f8fafc;
+      border-radius: 12px;
+      font-size: 14px;
+      line-height: 1.8;
+      color: #334155;
+    }
+
+    .story-text.show {
+      display: block;
+    }
+
+    .story-text p {
+      margin: 0 0 16px;
+    }
+
+    .story-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* VOCABULARY */
+
+    .vocabulary {
+      border-top: 1px solid #e2e8f0;
+      padding-top: 22px;
+    }
+
+    .vocabulary-content {
+      display: none;
+      margin-top: 14px;
+    }
+
+    .vocabulary-content.show {
+      display: block;
+    }
+
+    .word {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f1f5f9;
+      font-size: 14px;
+    }
+
+    .word:last-child {
+      border-bottom: none;
+    }
+
+    .english-word {
+      font-weight: 600;
+      color: #1e293b;
+    }
+
+    .translation {
+      color: #64748b;
+      text-align: right;
+    }
+
+    /* QUIZ COMMON STYLES */
+
+    .quiz {
+      margin-top: 24px;
+      padding-top: 22px;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .quiz-content {
+      display: none;
+      margin-top: 14px;
+    }
+
+    .quiz-content.show {
+      display: block;
+    }
+
+    .question {
+      font-size: 15px;
+      font-weight:
