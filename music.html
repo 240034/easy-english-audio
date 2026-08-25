@@ -215,4 +215,503 @@
 
     .question {
       font-size: 15px;
-      font-weight:
+      font-weight: 600;
+      line-height: 1.5;
+      margin: 8px 0 14px;
+    }
+
+    .question-number {
+      display: block;
+      font-size: 12px;
+      color: #64748b;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .answers {
+      display: grid;
+      gap: 8px;
+    }
+
+    .answer-btn {
+      border: 1px solid #e2e8f0;
+      background-color: #ffffff;
+      color: #334155;
+      padding: 12px;
+      border-radius: 10px;
+      text-align: left;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .answer-btn:hover:not(:disabled) {
+      background-color: #f8fafc;
+      border-color: #93c5fd;
+    }
+
+    .answer-btn:disabled {
+      cursor: default;
+    }
+
+    .answer-btn.correct {
+      background-color: #dcfce7;
+      border-color: #86efac;
+      color: #166534;
+    }
+
+    .answer-btn.wrong {
+      background-color: #fee2e2;
+      border-color: #fca5a5;
+      color: #991b1b;
+    }
+
+    .quiz-result {
+      display: none;
+      margin-top: 12px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .quiz-result.show {
+      display: block;
+    }
+
+    .restart-btn {
+      display: none;
+      width: 100%;
+      margin-top: 16px;
+      border: none;
+      background-color: #2563eb;
+      color: white;
+      padding: 12px;
+      border-radius: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .restart-btn.show {
+      display: block;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 480px) {
+      body {
+        padding: 20px 14px;
+      }
+
+      .player-card {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="player-card">
+
+    <a href="index.html" class="back-btn">⬅ Назад к списку</a>
+
+    <div class="category">Hobbies & Free Time</div>
+
+    <h3>03. Listening To Music</h3>
+
+    <div class="info">
+      <span class="tag">A1</span>
+      <span class="tag">Reading & Listening</span>
+    </div>
+
+    <div class="listen-box">
+
+      <div class="listen-title">🎧 LISTEN TO THE TEXT</div>
+
+      <p class="listen-text">
+        Listen carefully. You can follow the text below.
+      </p>
+
+      <audio controls src="./03_Music.mp3">
+        Your browser does not support audio.
+      </audio>
+
+    </div>
+
+    <div class="text-section">
+
+      <button class="toggle-btn" id="toggleText">
+        📖 Show Text
+      </button>
+
+      <div class="story-text" id="storyText">
+
+        <p>
+          Music is an important part of many people's lives. We can listen to music at home, in the car, or while walking outside.
+        </p>
+
+        <p>
+          I usually listen to music when I am relaxing. I also listen to it when I am cleaning my room or travelling somewhere.
+        </p>
+
+        <p>
+          I enjoy different kinds of music. My favorite songs can change depending on my mood.
+        </p>
+
+        <p>
+          Music can make us feel happy, calm, or even excited. Sometimes a song can also remind us of a special person or memory.
+        </p>
+
+        <p>
+          I often listen to music with my headphones. I like discovering new singers and adding their songs to my playlist.
+        </p>
+
+        <p>
+          Music is a simple way to make an ordinary day more enjoyable. I cannot imagine my life without it.
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="vocabulary">
+
+      <button class="toggle-btn" id="toggleVocabulary">
+        📚 Show Vocabulary
+      </button>
+
+      <div class="vocabulary-content" id="vocabularyContent">
+
+        <div class="section-title">📚 KEY VOCABULARY</div>
+
+        <div class="word">
+          <span class="english-word">mood</span>
+          <span class="translation">настроение</span>
+        </div>
+
+        <div class="word">
+          <span class="english-word">relaxing</span>
+          <span class="translation">расслабляющий</span>
+        </div>
+
+        <div class="word">
+          <span class="english-word">excited</span>
+          <span class="translation">взволнованный</span>
+        </div>
+
+        <div class="word">
+          <span class="english-word">remind</span>
+          <span class="translation">напоминать</span>
+        </div>
+
+        <div class="word">
+          <span class="english-word">memory</span>
+          <span class="translation">воспоминание</span>
+        </div>
+
+        <div class="word">
+          <span class="english-word">discover</span>
+          <span class="translation">открывать для себя</span>
+        </div>
+
+        <div class="word">
+          <span class="english-word">singer</span>
+          <span class="translation">певец</span>
+        </div>
+
+        <div class="word">
+          <span class="english-word">playlist</span>
+          <span class="translation">плейлист</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="quiz">
+
+      <button class="toggle-btn" id="toggleVocabQuiz">
+        🎮 Show Vocabulary Quiz
+      </button>
+
+      <div class="quiz-content" id="vocabQuizContent">
+
+        <div class="section-title">🎮 VOCABULARY GAME</div>
+
+        <div class="question" id="vocabQuestionText"></div>
+
+        <div class="answers" id="vocabAnswersContainer"></div>
+
+        <div class="quiz-result" id="vocabQuizResult"></div>
+
+        <button class="restart-btn" id="vocabRestartBtn">
+          Try Again
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="quiz">
+
+      <div class="section-title">🧠 READING COMPREHENSION</div>
+
+      <div class="question" id="readingQuestionText"></div>
+
+      <div class="answers" id="readingAnswersContainer"></div>
+
+      <div class="quiz-result" id="readingQuizResult"></div>
+
+      <button class="restart-btn" id="readingRestartBtn">
+        Try Again
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <script>
+
+    /* =========================
+       SHOW / HIDE TEXT
+    ========================== */
+
+    const toggleText = document.getElementById("toggleText");
+    const storyText = document.getElementById("storyText");
+
+    toggleText.addEventListener("click", function() {
+      storyText.classList.toggle("show");
+      toggleText.innerHTML = storyText.classList.contains("show") ? "📕 Hide Text" : "📖 Show Text";
+    });
+
+
+    /* =========================
+       SHOW / HIDE VOCABULARY
+    ========================== */
+
+    const toggleVocabulary = document.getElementById("toggleVocabulary");
+    const vocabularyContent = document.getElementById("vocabularyContent");
+
+    toggleVocabulary.addEventListener("click", function() {
+      vocabularyContent.classList.toggle("show");
+      toggleVocabulary.innerHTML = vocabularyContent.classList.contains("show") ? "📕 Hide Vocabulary" : "📚 Show Vocabulary";
+    });
+
+
+    /* =========================
+       SHOW / HIDE VOCABULARY QUIZ
+    ========================== */
+
+    const toggleVocabQuiz = document.getElementById("toggleVocabQuiz");
+    const vocabQuizContent = document.getElementById("vocabQuizContent");
+
+    toggleVocabQuiz.addEventListener("click", function() {
+      vocabQuizContent.classList.toggle("show");
+      toggleVocabQuiz.innerHTML = vocabQuizContent.classList.contains("show") ? "📕 Hide Vocabulary Quiz" : "🎮 Show Vocabulary Quiz";
+    });
+
+
+    /* =========================
+       QUIZ ENGINE FUNCTION
+    ========================== */
+
+    function createQuiz(questionsData, elements) {
+      let currentQuestion = 0;
+      let score = 0;
+
+      function showQuestion() {
+        const current = questionsData[currentQuestion];
+
+        elements.questionText.innerHTML = `
+          <span class="question-number">
+            Question ${currentQuestion + 1} of ${questionsData.length}
+          </span>
+          ${current.question}
+        `;
+
+        elements.answersContainer.innerHTML = "";
+        elements.quizResult.classList.remove("show");
+
+        current.answers.forEach(answer => {
+          const button = document.createElement("button");
+          button.className = "answer-btn";
+          button.textContent = answer;
+
+          button.addEventListener("click", function() {
+            const allButtons = elements.answersContainer.querySelectorAll(".answer-btn");
+            allButtons.forEach(btn => btn.disabled = true);
+
+            if (answer === current.correct) {
+              button.classList.add("correct");
+              score++;
+              elements.quizResult.textContent = "✓ Correct!";
+              elements.quizResult.style.color = "#166534";
+            } else {
+              button.classList.add("wrong");
+              allButtons.forEach(btn => {
+                if (btn.textContent === current.correct) {
+                  btn.classList.add("correct");
+                }
+              });
+              elements.quizResult.textContent = `The correct answer is: ${current.correct}`;
+              elements.quizResult.style.color = "#991b1b";
+            }
+
+            elements.quizResult.classList.add("show");
+
+            setTimeout(() => {
+              currentQuestion++;
+              if (currentQuestion < questionsData.length) {
+                showQuestion();
+              } else {
+                showFinalResult();
+              }
+            }, 1500);
+          });
+
+          elements.answersContainer.appendChild(button);
+        });
+      }
+
+      function showFinalResult() {
+        elements.questionText.innerHTML = "🎉 Quiz Complete!";
+        elements.answersContainer.innerHTML = "";
+        elements.quizResult.textContent = `Your score: ${score}/${questionsData.length}`;
+        elements.quizResult.style.color = "#2563eb";
+        elements.quizResult.classList.add("show");
+        elements.restartBtn.classList.add("show");
+      }
+
+      elements.restartBtn.addEventListener("click", function() {
+        currentQuestion = 0;
+        score = 0;
+        elements.restartBtn.classList.remove("show");
+        elements.quizResult.classList.remove("show");
+        showQuestion();
+      });
+
+      showQuestion();
+    }
+
+
+    /* =========================
+       1. VOCABULARY QUIZ DATA (8 QUESTIONS)
+    ========================== */
+
+    const vocabQuestions = [
+      {
+        question: 'What does "mood" mean?',
+        answers: ["настроение", "чувство", "мысль"],
+        correct: "настроение"
+      },
+      {
+        question: 'What does "relaxing" mean?',
+        answers: ["утомительный", "расслабляющий", "скучный"],
+        correct: "расслабляющий"
+      },
+      {
+        question: 'What does "excited" mean?',
+        answers: ["взволнованный", "грустный", "спокойный"],
+        correct: "взволнованный"
+      },
+      {
+        question: 'What does "remind" mean?',
+        answers: ["забывать", "напоминать", "повторять"],
+        correct: "напоминать"
+      },
+      {
+        question: 'What does "memory" mean?',
+        answers: ["метод", "воспоминание", "мечта"],
+        correct: "воспоминание"
+      },
+      {
+        question: 'What does "discover" mean?',
+        answers: ["открывать для себя", "терять", "искать"],
+        correct: "открывать для себя"
+      },
+      {
+        question: 'What does "singer" mean?',
+        answers: ["музыкант", "певец", "композитор"],
+        correct: "певец"
+      },
+      {
+        question: 'What does "playlist" mean?',
+        answers: ["список", "плейлист", "альбом"],
+        correct: "плейлист"
+      }
+    ];
+
+    createQuiz(vocabQuestions, {
+      questionText: document.getElementById("vocabQuestionText"),
+      answersContainer: document.getElementById("vocabAnswersContainer"),
+      quizResult: document.getElementById("vocabQuizResult"),
+      restartBtn: document.getElementById("vocabRestartBtn")
+    });
+
+
+    /* =========================
+       2. READING QUIZ DATA (5 QUESTIONS)
+    ========================== */
+
+    const readingQuestions = [
+      {
+        question: 'Where can people listen to music according to the text?',
+        answers: [
+          "At home, in the car, or while walking outside",
+          "Only in music halls and theaters",
+          "Only at home"
+        ],
+        correct: "At home, in the car, or while walking outside"
+      },
+      {
+        question: 'When does the speaker listen to music?',
+        answers: [
+          "When relaxing, cleaning their room, or travelling",
+          "Only when sleeping",
+          "Only while studying for exams"
+        ],
+        correct: "When relaxing, cleaning their room, or travelling"
+      },
+      {
+        question: 'What determines the speaker\'s favorite songs?',
+        answers: [
+          "Their mood",
+          "The weather outside",
+          "The time of day"
+        ],
+        correct: "Their mood"
+      },
+      {
+        question: 'How can music affect our emotions?',
+        answers: [
+          "It can make us feel happy, calm, or excited",
+          "It always makes people feel sad",
+          "It makes people feel tired"
+        ],
+        correct: "It can make us feel happy, calm, or excited"
+      },
+      {
+        question: 'How does the speaker usually listen to music?',
+        answers: [
+          "With headphones",
+          "On a record player",
+          "Through a loud speaker"
+        ],
+        correct: "With headphones"
+      }
+    ];
+
+    createQuiz(readingQuestions, {
+      questionText: document.getElementById("readingQuestionText"),
+      answersContainer: document.getElementById("readingAnswersContainer"),
+      quizResult: document.getElementById("readingQuizResult"),
+      restartBtn: document.getElementById("readingRestartBtn")
+    });
+
+  </script>
+
+</body>
+</html>
