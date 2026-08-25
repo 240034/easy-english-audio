@@ -82,10 +82,11 @@
       background-color: #f8fafc;
       padding: 18px;
       border-radius: 12px;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
-    .listen-title {
+    .listen-title,
+    .section-title {
       font-size: 13px;
       font-weight: 700;
       letter-spacing: 0.08em;
@@ -104,6 +105,55 @@
       width: 100%;
       border-radius: 8px;
     }
+
+    /* SHOW / HIDE TEXT */
+
+    .text-section {
+      margin: 20px 0 24px;
+    }
+
+    .toggle-btn {
+      width: 100%;
+      border: 1px solid #dbeafe;
+      background-color: #eff6ff;
+      color: #2563eb;
+      padding: 12px 15px;
+      border-radius: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .toggle-btn:hover {
+      background-color: #dbeafe;
+    }
+
+    .story-text {
+      display: none;
+      margin-top: 12px;
+      padding: 18px;
+      background-color: #f8fafc;
+      border-radius: 12px;
+      font-size: 14px;
+      line-height: 1.8;
+      color: #334155;
+    }
+
+    .story-text.show {
+      display: block;
+    }
+
+    .story-text p {
+      margin: 0 0 16px;
+    }
+
+    .story-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* TIP */
 
     .tip {
       border-left: 3px solid #2563eb;
@@ -126,17 +176,11 @@
       margin: 0;
     }
 
+    /* VOCABULARY */
+
     .vocabulary {
       border-top: 1px solid #e2e8f0;
       padding-top: 22px;
-    }
-
-    .section-title {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      color: #64748b;
-      margin-bottom: 14px;
     }
 
     .word {
@@ -160,6 +204,82 @@
     .translation {
       color: #64748b;
       text-align: right;
+    }
+
+    /* QUIZ */
+
+    .quiz {
+      margin-top: 24px;
+      padding-top: 22px;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .question {
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.5;
+      margin: 8px 0 14px;
+    }
+
+    .answers {
+      display: grid;
+      gap: 8px;
+    }
+
+    .answer-btn {
+      border: 1px solid #e2e8f0;
+      background-color: #ffffff;
+      color: #334155;
+      padding: 12px;
+      border-radius: 10px;
+      text-align: left;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .answer-btn:hover {
+      background-color: #f8fafc;
+      border-color: #93c5fd;
+    }
+
+    .answer-btn.correct {
+      background-color: #dcfce7;
+      border-color: #86efac;
+      color: #166534;
+    }
+
+    .answer-btn.wrong {
+      background-color: #fee2e2;
+      border-color: #fca5a5;
+      color: #991b1b;
+    }
+
+    .quiz-result {
+      display: none;
+      margin-top: 12px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .quiz-result.show {
+      display: block;
+    }
+
+    .next-btn {
+      display: block;
+      width: 100%;
+      margin-top: 24px;
+      padding: 13px;
+      border: none;
+      border-radius: 10px;
+      background-color: #2563eb;
+      color: white;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
     }
 
     @media (max-width: 480px) {
@@ -189,11 +309,13 @@
       <span class="tag">Reading & Listening</span>
     </div>
 
+    <!-- AUDIO -->
+
     <div class="listen-box">
       <div class="listen-title">🎧 LISTEN TO THE TEXT</div>
 
       <p class="listen-text">
-        Listen carefully. You can follow the text in your book.
+        Listen carefully. You can follow the text below.
       </p>
 
       <audio controls src="./01_My_Family.mp3">
@@ -201,15 +323,66 @@
       </audio>
     </div>
 
+    <!-- SHOW / HIDE TEXT -->
+
+    <div class="text-section">
+
+      <button class="toggle-btn" id="toggleText">
+        📖 Show Text
+      </button>
+
+      <div class="story-text" id="storyText">
+
+        <p>
+          Family is very important to me. I have a small and happy family.
+          There are four people in my family: my mother, my father, my brother, and me.
+        </p>
+
+        <p>
+          My mother is kind and friendly. She likes cooking and watching TV.
+          My father is funny and hardworking. He likes reading books and going for walks.
+        </p>
+
+        <p>
+          I have one younger brother. We like playing games and watching movies together.
+          Sometimes we play outside or go to the park.
+        </p>
+
+        <p>
+          We also have a dog. His name is Max. He is very friendly and playful.
+          He likes running, playing with a ball, and sleeping on the sofa.
+          We love spending time with him.
+        </p>
+
+        <p>
+          We live in a nice house. In the evening, we usually have dinner together
+          and talk about our day. At the weekend, we sometimes watch a movie
+          or go for a walk.
+        </p>
+
+        <p>
+          I love my family very much. We help each other, spend time together,
+          and have a lot of fun!
+        </p>
+
+      </div>
+
+    </div>
+
+    <!-- TIP -->
+
     <div class="tip">
       <div class="tip-title">💡 Listening Tip</div>
 
       <p class="tip-text">
-        Listen once without reading. Then listen again and follow the text in your book.
+        First, listen without reading. Then listen again and follow the text.
       </p>
     </div>
 
+    <!-- VOCABULARY -->
+
     <div class="vocabulary">
+
       <div class="section-title">📚 KEY VOCABULARY</div>
 
       <div class="word">
@@ -231,9 +404,90 @@
         <span class="english-word">sofa</span>
         <span class="translation">диван</span>
       </div>
+
+    </div>
+
+    <!-- VOCABULARY GAME -->
+
+    <div class="quiz">
+
+      <div class="section-title">🧠 VOCABULARY GAME</div>
+
+      <div class="question">
+        What does <strong>playful</strong> mean?
+      </div>
+
+      <div class="answers">
+        <button class="answer-btn" data-correct="false">
+          трудолюбивый
+        </button>
+
+        <button class="answer-btn" data-correct="true">
+          игривый
+        </button>
+
+        <button class="answer-btn" data-correct="false">
+          младше
+        </button>
+      </div>
+
+      <div class="quiz-result" id="quizResult"></div>
+
     </div>
 
   </div>
+
+  <script>
+
+    /* SHOW / HIDE TEXT */
+
+    const toggleText = document.getElementById("toggleText");
+    const storyText = document.getElementById("storyText");
+
+    toggleText.addEventListener("click", function() {
+      storyText.classList.toggle("show");
+
+      if (storyText.classList.contains("show")) {
+        toggleText.innerHTML = "📕 Hide Text";
+      } else {
+        toggleText.innerHTML = "📖 Show Text";
+      }
+    });
+
+
+    /* VOCABULARY GAME */
+
+    const answerButtons = document.querySelectorAll(".answer-btn");
+    const quizResult = document.getElementById("quizResult");
+
+    answerButtons.forEach(button => {
+      button.addEventListener("click", function() {
+
+        answerButtons.forEach(btn => {
+          btn.disabled = true;
+        });
+
+        if (this.dataset.correct === "true") {
+          this.classList.add("correct");
+
+          quizResult.textContent = "✓ Correct! Playful means игривый.";
+          quizResult.style.color = "#166534";
+
+        } else {
+          this.classList.add("wrong");
+
+          document.querySelector('[data-correct="true"]').classList.add("correct");
+
+          quizResult.textContent = "Not quite. Playful means игривый.";
+          quizResult.style.color = "#991b1b";
+        }
+
+        quizResult.classList.add("show");
+
+      });
+    });
+
+  </script>
 
 </body>
 </html>
