@@ -3,12 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>09. People Around The World — Easy English Audio</title>
-  <link rel="preconnect" href="https://googleapis.com">
-  <link rel="preconnect" href="https://gstatic.com" crossorigin>
-  <link href="https://googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
       background-color: #f8fafc;
@@ -18,58 +24,708 @@
       display: flex;
       justify-content: center;
     }
+
     .player-card {
       background: #ffffff;
       padding: 30px;
       border-radius: 16px;
-      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      box-shadow: 0 4px 20px -5px rgb(0 0 0 / 0.08);
       width: 100%;
       max-width: 450px;
     }
+
     .back-btn {
       display: inline-block;
       color: #64748b;
       text-decoration: none;
       font-size: 14px;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       font-weight: 500;
     }
+
     .back-btn:hover {
       color: #0f172a;
     }
+
     .category {
       font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
       color: #64748b;
       font-weight: 600;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
+
     h3 {
-      font-size: 22px;
+      font-size: 24px;
       color: #2563eb;
-      margin-top: 0;
-      margin-bottom: 20px;
+      margin: 0 0 10px;
     }
+
+    .info {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .tag {
+      background-color: #eff6ff;
+      color: #2563eb;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 10px;
+      border-radius: 20px;
+    }
+
+    /* AUDIO */
+
+    .listen-box {
+      background-color: #f8fafc;
+      padding: 18px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+    }
+
+    .listen-title,
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #64748b;
+      margin-bottom: 8px;
+    }
+
+    .listen-text {
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.5;
+      margin: 0 0 15px;
+    }
+
     audio {
       width: 100%;
       border-radius: 8px;
     }
+
+    /* BUTTONS */
+
+    .toggle-btn {
+      width: 100%;
+      border: 1px solid #dbeafe;
+      background-color: #eff6ff;
+      color: #2563eb;
+      padding: 12px 15px;
+      border-radius: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .toggle-btn:hover {
+      background-color: #dbeafe;
+    }
+
+    /* TEXT */
+
+    .text-section {
+      margin: 20px 0 24px;
+    }
+
+    .story-text {
+      display: none;
+      margin-top: 12px;
+      padding: 18px;
+      background-color: #f8fafc;
+      border-radius: 12px;
+      font-size: 14px;
+      line-height: 1.8;
+      color: #334155;
+    }
+
+    .story-text.show {
+      display: block;
+    }
+
+    .story-text p {
+      margin: 0 0 16px;
+    }
+
+    .story-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* VOCABULARY */
+
+    .vocabulary {
+      border-top: 1px solid #e2e8f0;
+      padding-top: 22px;
+    }
+
+    .vocabulary-content {
+      display: none;
+      margin-top: 14px;
+    }
+
+    .vocabulary-content.show {
+      display: block;
+    }
+
+    .word {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f1f5f9;
+      font-size: 14px;
+    }
+
+    .word:last-child {
+      border-bottom: none;
+    }
+
+    .english-word {
+      font-weight: 600;
+      color: #1e293b;
+    }
+
+    .translation {
+      color: #64748b;
+      text-align: right;
+    }
+
+    /* QUIZ COMMON STYLES */
+
+    .quiz {
+      margin-top: 24px;
+      padding-top: 22px;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .quiz-content {
+      display: none;
+      margin-top: 14px;
+    }
+
+    .quiz-content.show {
+      display: block;
+    }
+
+    .question {
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.5;
+      margin: 8px 0 14px;
+    }
+
+    .question-number {
+      display: block;
+      font-size: 12px;
+      color: #64748b;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .answers {
+      display: grid;
+      gap: 8px;
+    }
+
+    .answer-btn {
+      border: 1px solid #e2e8f0;
+      background-color: #ffffff;
+      color: #334155;
+      padding: 12px;
+      border-radius: 10px;
+      text-align: left;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .answer-btn:hover:not(:disabled) {
+      background-color: #f8fafc;
+      border-color: #93c5fd;
+    }
+
+    .answer-btn:disabled {
+      cursor: default;
+    }
+
+    .answer-btn.correct {
+      background-color: #dcfce7;
+      border-color: #86efac;
+      color: #166534;
+    }
+
+    .answer-btn.wrong {
+      background-color: #fee2e2;
+      border-color: #fca5a5;
+      color: #991b1b;
+    }
+
+    .quiz-result {
+      display: none;
+      margin-top: 12px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .quiz-result.show {
+      display: block;
+    }
+
+    .restart-btn {
+      display: none;
+      width: 100%;
+      margin-top: 16px;
+      border: none;
+      background-color: #2563eb;
+      color: white;
+      padding: 12px;
+      border-radius: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .restart-btn.show {
+      display: block;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 480px) {
+      body {
+        padding: 20px 14px;
+      }
+
+      .player-card {
+        padding: 22px;
+      }
+    }
   </style>
 </head>
+
 <body>
 
   <div class="player-card">
-    <!-- Ссылка "index.html" вернет пользователя на главную страницу -->
+
+    <!-- BACK -->
+
     <a href="index.html" class="back-btn">⬅ Назад к списку</a>
 
+    <!-- TITLE -->
+
     <div class="category">My World</div>
+
     <h3>09. People Around The World</h3>
 
-    <audio controls src="./09_People_Around_The_World.mp3">
-      Your browser does not support audio.
-    </audio>
+    <div class="info">
+      <span class="tag">A1</span>
+      <span class="tag">Reading & Listening</span>
+    </div>
+
+    <!-- AUDIO -->
+
+    <div class="listen-box">
+
+      <div class="listen-title">🎧 LISTEN TO THE TEXT</div>
+
+      <p class="listen-text">
+        Listen carefully. You can follow the text below.
+      </p>
+
+      <audio controls src="./09_People_Around_The_World.mp3">
+        Your browser does not support audio.
+      </audio>
+
+    </div>
+
+    <!-- SHOW / HIDE TEXT -->
+
+    <div class="text-section">
+
+      <button class="toggle-btn" id="toggleText">
+        📖 Show Text
+      </button>
+
+      <div class="story-text" id="storyText">
+
+        <p>
+          People live in many different countries around the world. They speak different languages, eat different food, and have different traditions.
+        </p>
+
+        <p>
+          In Japan, people often eat rice, fish, and vegetables. Many people also enjoy tea.
+        </p>
+
+        <p>
+          In Italy, people love pizza and pasta. Families often spend time together and enjoy long meals.
+        </p>
+
+        <p>
+          In Brazil, people love music, dancing, and football. Brazil is also famous for its beautiful beaches.
+        </p>
+
+        <p>
+          In Kazakhstan, people enjoy traditional food, family celebrations, and spending time with guests.
+        </p>
+
+        <p>
+          Every country is different, but people everywhere like spending time with family and friends.
+        </p>
+
+      </div>
+
+    </div>
+
+    <!-- VOCABULARY -->
+
+    <div class="vocabulary">
+
+      <button class="toggle-btn" id="toggleVocabulary">
+        📚 Show Vocabulary
+      </button>
+
+      <div class="vocabulary-content" id="vocabularyContent">
+
+        <div class="section-title">📚 KEY VOCABULARY</div>
+
+        <div class="word">
+          <span class="english-word">country</span>
+          <span class="translation">страна</span>
+        </div>
+
+        <div class="word">
+          <span class="english-word">different</span>
+          <span class="translation">разный</span>
+        </div>
+
+        <div class="word">
+          <span class="english-word">language</span>
+          <span class="translation">язык</span>
+        </div>
+
+        <div class="word">
+          <span class="english-word">tradition</span>
+          <span class="translation">традиция</span>
+        </div>
+
+        <div class="word">
+          <span class="english-word">rice</span>
+          <span class="translation">рис</span>
+        </div>
+
+        <div class="word">
+          <span class="english-word">fish</span>
+          <span class="translation">рыба</span>
+        </div>
+
+        <div class="word">
+          <span class="english-word">vegetables</span>
+          <span class="translation">овощи</span>
+        </div>
+
+        <div class="word">
+          <span class="english-word">celebration</span>
+          <span class="translation">праздник</span>
+        </div>
+
+        <div class="word">
+          <span class="english-word">guest</span>
+          <span class="translation">гость</span>
+        </div>
+
+        <div class="word">
+          <span class="english-word">everywhere</span>
+          <span class="translation">везде</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- SECTION 1: VOCABULARY QUIZ -->
+
+    <div class="quiz">
+
+      <button class="toggle-btn" id="toggleVocabQuiz">
+        🎮 Show Vocabulary Quiz
+      </button>
+
+      <div class="quiz-content" id="vocabQuizContent">
+
+        <div class="section-title">🎮 VOCABULARY GAME</div>
+
+        <div class="question" id="vocabQuestionText"></div>
+
+        <div class="answers" id="vocabAnswersContainer"></div>
+
+        <div class="quiz-result" id="vocabQuizResult"></div>
+
+        <button class="restart-btn" id="vocabRestartBtn">
+          Try Again
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- SECTION 2: READING COMPREHENSION QUIZ -->
+
+    <div class="quiz">
+
+      <div class="section-title">🧠 READING COMPREHENSION</div>
+
+      <div class="question" id="readingQuestionText"></div>
+
+      <div class="answers" id="readingAnswersContainer"></div>
+
+      <div class="quiz-result" id="readingQuizResult"></div>
+
+      <button class="restart-btn" id="readingRestartBtn">
+        Try Again
+      </button>
+
+    </div>
+
   </div>
+
+
+  <script>
+
+    /* =========================
+       SHOW / HIDE TEXT
+    ========================== */
+
+    const toggleText = document.getElementById("toggleText");
+    const storyText = document.getElementById("storyText");
+
+    toggleText.addEventListener("click", function() {
+      storyText.classList.toggle("show");
+      toggleText.innerHTML = storyText.classList.contains("show") ? "📕 Hide Text" : "📖 Show Text";
+    });
+
+
+    /* =========================
+       SHOW / HIDE VOCABULARY
+    ========================== */
+
+    const toggleVocabulary = document.getElementById("toggleVocabulary");
+    const vocabularyContent = document.getElementById("vocabularyContent");
+
+    toggleVocabulary.addEventListener("click", function() {
+      vocabularyContent.classList.toggle("show");
+      toggleVocabulary.innerHTML = vocabularyContent.classList.contains("show") ? "📕 Hide Vocabulary" : "📚 Show Vocabulary";
+    });
+
+
+    /* =========================
+       SHOW / HIDE VOCABULARY QUIZ
+    ========================== */
+
+    const toggleVocabQuiz = document.getElementById("toggleVocabQuiz");
+    const vocabQuizContent = document.getElementById("vocabQuizContent");
+
+    toggleVocabQuiz.addEventListener("click", function() {
+      vocabQuizContent.classList.toggle("show");
+      toggleVocabQuiz.innerHTML = vocabQuizContent.classList.contains("show") ? "📕 Hide Vocabulary Quiz" : "🎮 Show Vocabulary Quiz";
+    });
+
+
+    /* =========================
+       QUIZ ENGINE FUNCTION
+    ========================== */
+
+    function createQuiz(questionsData, elements) {
+      let currentQuestion = 0;
+      let score = 0;
+
+      function showQuestion() {
+        const current = questionsData[currentQuestion];
+
+        elements.questionText.innerHTML = `
+          <span class="question-number">
+            Question ${currentQuestion + 1} of ${questionsData.length}
+          </span>
+          ${current.question}
+        `;
+
+        elements.answersContainer.innerHTML = "";
+        elements.quizResult.classList.remove("show");
+
+        current.answers.forEach(answer => {
+          const button = document.createElement("button");
+          button.className = "answer-btn";
+          button.textContent = answer;
+
+          button.addEventListener("click", function() {
+            const allButtons = elements.answersContainer.querySelectorAll(".answer-btn");
+            allButtons.forEach(btn => btn.disabled = true);
+
+            if (answer === current.correct) {
+              button.classList.add("correct");
+              score++;
+              elements.quizResult.textContent = "✓ Correct!";
+              elements.quizResult.style.color = "#166534";
+            } else {
+              button.classList.add("wrong");
+              allButtons.forEach(btn => {
+                if (btn.textContent === current.correct) {
+                  btn.classList.add("correct");
+                }
+              });
+              elements.quizResult.textContent = `The correct answer is: ${current.correct}`;
+              elements.quizResult.style.color = "#991b1b";
+            }
+
+            elements.quizResult.classList.add("show");
+
+            setTimeout(() => {
+              currentQuestion++;
+              if (currentQuestion < questionsData.length) {
+                showQuestion();
+              } else {
+                showFinalResult();
+              }
+            }, 1500);
+          });
+
+          elements.answersContainer.appendChild(button);
+        });
+      }
+
+      function showFinalResult() {
+        elements.questionText.innerHTML = "🎉 Quiz Complete!";
+        elements.answersContainer.innerHTML = "";
+        elements.quizResult.textContent = `Your score: ${score}/${questionsData.length}`;
+        elements.quizResult.style.color = "#2563eb";
+        elements.quizResult.classList.add("show");
+        elements.restartBtn.classList.add("show");
+      }
+
+      elements.restartBtn.addEventListener("click", function() {
+        currentQuestion = 0;
+        score = 0;
+        elements.restartBtn.classList.remove("show");
+        elements.quizResult.classList.remove("show");
+        showQuestion();
+      });
+
+      showQuestion();
+    }
+
+
+    /* =========================
+       1. VOCABULARY QUIZ DATA (10 QUESTIONS)
+    ========================== */
+
+    const vocabQuestions = [
+      {
+        question: 'What does "country" mean?',
+        answers: ["страна", "город", "традиция"],
+        correct: "страна"
+      },
+      {
+        question: 'What does "different" mean?',
+        answers: ["похожий", "разный", "красивый"],
+        correct: "разный"
+      },
+      {
+        question: 'What does "language" mean?',
+        answers: ["язык", "слово", "праздник"],
+        correct: "язык"
+      },
+      {
+        question: 'What does "tradition" mean?',
+        answers: ["традиция", "гость", "праздник"],
+        correct: "традиция"
+      },
+      {
+        question: 'What does "rice" mean?',
+        answers: ["рис", "рыба", "овощи"],
+        correct: "рис"
+      },
+      {
+        question: 'What does "fish" mean?',
+        answers: ["мясо", "рыба", "рис"],
+        correct: "рыба"
+      },
+      {
+        question: 'What does "vegetables" mean?',
+        answers: ["фрукты", "овощи", "сладости"],
+        correct: "овощи"
+      },
+      {
+        question: 'What does "celebration" mean?',
+        answers: ["праздник", "традиция", "гость"],
+        correct: "праздник"
+      },
+      {
+        question: 'What does "guest" mean?',
+        answers: ["друг", "гость", "семья"],
+        correct: "гость"
+      },
+      {
+        question: 'What does "everywhere" mean?',
+        answers: ["везде", "иногда", "нигде"],
+        correct: "везде"
+      }
+    ];
+
+    createQuiz(vocabQuestions, {
+      questionText: document.getElementById("vocabQuestionText"),
+      answersContainer: document.getElementById("vocabAnswersContainer"),
+      quizResult: document.getElementById("vocabQuizResult"),
+      restartBtn: document.getElementById("vocabRestartBtn")
+    });
+
+
+    /* =========================
+       2. READING QUIZ DATA (5 QUESTIONS)
+    ========================== */
+
+    const readingQuestions = [
+      {
+        question: 'What do people in Japan often eat and drink?',
+        answers: ["Pizza, pasta, and coffee", "Rice, fish, vegetables, and tea", "Burgers and soda"],
+        correct: "Rice, fish, vegetables, and tea"
+      },
+      {
+        question: 'What food do people love in Italy?',
+        answers: ["Pizza and pasta", "Sushi and rice", "Tacos and nachos"],
+        correct: "Pizza and pasta"
+      },
+      {
+        question: 'What is Brazil famous for according to the text?',
+        answers: ["Music, dancing, football, and beautiful beaches", "Cold weather and skiing", "Tall skyscrapers and fast trains"],
+        correct: "Music, dancing, football, and beautiful beaches"
+      },
+      {
+        question: 'What do people enjoy in Kazakhstan?',
+        answers: ["Traditional food, family celebrations, and spending time with guests", "Surfing on big waves", "Eating pizza every day"],
+        correct: "Traditional food, family celebrations, and spending time with guests"
+      },
+      {
+        question: 'What do people everywhere like doing despite being in different countries?',
+        answers: ["Working all day without rest", "Spending time with family and friends", "Traveling alone"],
+        correct: "Spending time with family and friends"
+      }
+    ];
+
+    createQuiz(readingQuestions, {
+      questionText: document.getElementById("readingQuestionText"),
+      answersContainer: document.getElementById("readingAnswersContainer"),
+      quizResult: document.getElementById("readingQuizResult"),
+      restartBtn: document.getElementById("readingRestartBtn")
+    });
+
+  </script>
 
 </body>
 </html>
